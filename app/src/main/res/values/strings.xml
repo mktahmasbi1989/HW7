@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Advance To Do List</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description">Description :</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="edite">edite</string>
+    <string name="delete">Delete</string>
+    <string name="done">Done</string>
+    <string name="job_title">Job Title</string>
+    <string name="details">Details</string>
+    <string name="add_job">Add Job</string>
+    <string name="Title">عنوان</string>
+    <string name="Describe">جزئیات</string>
+    <string name="date_textView">تاریخ</string>
+    <string name="time_textView">ساعت</string>
+    <string name="edite_textView">ویرایش</string>
+    <string name="delete_textView">حذف</string>
+    <string name="done_textView">انجام شد</string>
+</resources>
