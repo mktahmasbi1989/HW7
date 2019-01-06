@@ -56,7 +56,7 @@ public class TaskDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         assert getArguments() != null;
         UUID jobId= (UUID) getArguments().getSerializable(ARG_JOB_ID);
-        mTask = TasksRepository.getInstance().getTask(jobId);
+        mTask = TasksRepository.getInstance(getActivity()).getTask(jobId);
 
     }
 
@@ -90,8 +90,8 @@ public class TaskDetailFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                TasksRepository.getInstance().removeTask(mTask.getId());
-                                TasksRepository.getInstance().removeDoneList(mTask.getId());
+//                                TasksRepository.getInstance(getActivity()).removeTask(mTask.getId());
+//                                TasksRepository.getInstance(getActivity().removeDoneList(mTask.getId());
                                 updateFragments();
                                 getActivity().getSupportFragmentManager().popBackStack();
 
@@ -118,9 +118,9 @@ public class TaskDetailFragment extends Fragment {
         mBtnEdite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTask.setDetail(mTextViewDescribtion.getText().toString());
-                TasksRepository.getInstance().upDateTask(mTask,mTask.getId());
-                updateFragments();
+//                mTask.setDetail(mTextViewDescribtion.getText().toString());
+//                TasksRepository.getInstance(getActivity()).upDateTask(mTask,mTask.getId());
+//                updateFragments();
                 getActivity().getSupportFragmentManager().popBackStack();
 
             }

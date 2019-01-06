@@ -41,7 +41,7 @@ public class AddTaskFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mTasks = TasksRepository.getInstance().getTaskList();
+        mTasks = TasksRepository.getInstance(getActivity()).getTaskList();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class AddTaskFragment extends Fragment {
                     String title=mEditTextJobTitle.getText().toString();
                     String detail= mEditTextDetail.getText().toString();
                     mTask =new Task(title,detail);
-                    TasksRepository.getInstance().addToAllList(mTask);
+                    TasksRepository.getInstance(getActivity()).addToAllList(mTask);
                     getActivity().getSupportFragmentManager().popBackStack("add",R.id.addJobLayout);
                 }
             }

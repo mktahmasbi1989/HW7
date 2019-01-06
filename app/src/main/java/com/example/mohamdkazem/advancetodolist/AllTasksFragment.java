@@ -74,7 +74,7 @@ public class AllTasksFragment extends Fragment {
     }
 
     private void upDateUI() {
-        List<Task> mListTask = TasksRepository.getInstance().getTaskList();
+        List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskList();
         if (mListTask.size()==0)
         {
             mTextViewNoTask.setVisibility(View.VISIBLE);
@@ -82,7 +82,9 @@ public class AllTasksFragment extends Fragment {
         if (mJobAdaptor==null){
             mJobAdaptor=new JobAdaptor(mListTask);
             mRecyclerView.setAdapter(mJobAdaptor);
-        }else mJobAdaptor.notifyDataSetChanged();
+        }else
+            mJobAdaptor.setTasks(mListTask);
+            mJobAdaptor.notifyDataSetChanged();
     }
 
     private class JobAdaptor extends RecyclerView.Adapter<JobHolder>{
@@ -90,6 +92,9 @@ public class AllTasksFragment extends Fragment {
         private List<Task> mTasks;
         JobAdaptor(List<Task> mListTask) {
             mTasks = mListTask;
+        }
+        public void setTasks(List<Task> tasks) {
+            mTasks= tasks;
         }
 
         @NonNull

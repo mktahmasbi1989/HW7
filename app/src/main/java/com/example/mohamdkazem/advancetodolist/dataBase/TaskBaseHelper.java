@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class TaskBaseHelper extends SQLiteOpenHelper {
 
-    public TaskBaseHelper( Context context, String name,  SQLiteDatabase.CursorFactory factory, int version) {
+    public TaskBaseHelper(Context context) {
         super(context, TaskDbSchema.NAME, null, TaskDbSchema.VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(" Create table "+ TaskDbSchema.NAME + "(" +
+        db.execSQL(" Create table "+ TaskDbSchema.TasksTable.NAME + "(" +
                 "_id integer primary key autoincrement, " +
                 TaskDbSchema.TasksTable.tasksCols.UUID + ", " +
                 TaskDbSchema.TasksTable.tasksCols.TITLE + ", " +

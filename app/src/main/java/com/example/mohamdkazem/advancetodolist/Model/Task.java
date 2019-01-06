@@ -9,8 +9,19 @@ public class Task {
     private String mDetail;
     private Date mDate;
     private UUID mId;
-    private Time mTime;
+    private long mTime;
     private boolean mDone;
+
+    public Task(String title, String detail, UUID uuid) {
+        mTitle = title;
+        if (detail == null) {
+            mDetail = "";
+        } else mDetail = detail;
+        mId = uuid;
+        mDate = new Date();
+        mDone = false;
+        mTime = new Date().getTime();
+    }
 
     public boolean isDone() {
         return mDone;
@@ -22,12 +33,13 @@ public class Task {
 
     public Task(String title, String detail) {
         mTitle = title;
-        if (detail==null) {
+        if (detail == null) {
             mDetail = "";
-        }else mDetail=detail;
+        } else mDetail = detail;
         mId = UUID.randomUUID();
         mDate = new Date();
-        mDone=false;
+        mDone = false;
+        mTime = new Date().getTime();
     }
 
 
@@ -37,10 +49,10 @@ public class Task {
     public void setDate(Date date) {
         mDate = date;
     }
-    public Time getTime() {
+    public Long getTime() {
         return mTime;
     }
-    public void setTime(Time time) {
+    public void setTime(Long time) {
         mTime = time;
     }
     public UUID getId() {
