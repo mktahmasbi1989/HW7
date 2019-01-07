@@ -16,11 +16,9 @@ import java.util.UUID;
 
 public class TasksRepository {
 
-//    private List<Task> mTaskList;
-    private static TasksRepository tasksRepository;
     private SQLiteDatabase mDataBase;
-    private Context mContext;
 
+    private Context mContext;
     private TasksRepository(Context context) {
         mContext=context.getApplicationContext();
         mDataBase=new TaskBaseHelper(mContext).getWritableDatabase();
@@ -100,42 +98,6 @@ public class TasksRepository {
 //        }
 //        return null;
     }
-    public List<Task> getDoneList(){
-//        return mTaskList;
-        return new ArrayList<>();
-    }
-//
-//    public void upDateTask(Task task,UUID id){
-//        for (int i = 0; i <mTaskList.size() ; i++) {
-//            if (mTaskList.get(i).getId().equals(id)){
-//                mTaskList.remove(mTaskList.get(i));
-//                mTaskList.add(i,task);
-//            }
-//
-//        }
-//    }
-    public void removeTask(UUID id) {
-//        for (int i = 0; i < mTaskList.size(); i++) {
-//            if (mTaskList.get(i).getId().equals(id)) {
-//                mTaskList.remove(mTaskList.get(i));
-//            }
-//        }
-    }
-
-//    public void  removeDoneList(UUID id){×
-////        for (int i = 0; i <mDoneTaskList.size() ; i++) {
-////            if (mDoneTaskList.get(i).getId().equals(id)){
-////                mDoneTaskList.remove(mDoneTaskList.get(i));
-////            }
-////
-////        }
-////    }
-    public void addToAllList(Task task) {
-        ContentValues values=getContentValues(task);
-        mDataBase.insert(TaskDbSchema.TasksTable.NAME,null,values);
-
-//        mTaskList.add(task);
-    }
 
     public void delete(Task task){
         String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
@@ -152,5 +114,45 @@ public class TasksRepository {
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.DONE,task.isDone() ? 1 : 0);
         return contentValues;
     }
+
+    public void addToAllList(Task task) {
+        ContentValues values=getContentValues(task);
+        mDataBase.insert(TaskDbSchema.TasksTable.NAME,null,values);
+
+//        mTaskList.add(task);
+    }
+
+    //    private List<Task> mTaskList;
+    private static TasksRepository tasksRepository;
+    public List<Task> getDoneList(){
+//        return mTaskList;
+        return new ArrayList<>();
+    }
+    //
+
+//    public void upDateTask(Task task,UUID id){
+//        for (int i = 0; i <mTaskList.size() ; i++) {
+//            if (mTaskList.get(i).getId().equals(id)){
+//                mTaskList.remove(mTaskList.get(i));
+//                mTaskList.add(i,task);
+//            }
+//
+//        }
+//    }
+    public void removeTask(UUID id) {
+//        for (int i = 0; i < mTaskList.size(); i++) {
+//            if (mTaskList.get(i).getId().equals(id)) {
+//                mTaskList.remove(mTaskList.get(i));
+//            }
+//        }
+    }
+    ////    }
+    ////        }
+    ////
+    ////            }
+    ////                mDoneTaskList.remove(mDoneTaskList.get(i));
+    ////            if (mDoneTaskList.get(i).getId().equals(id)){
+    ////        for (int i = 0; i <mDoneTaskList.size() ; i++) {
+    //    public void  removeDoneList(UUID id){×
 }
 

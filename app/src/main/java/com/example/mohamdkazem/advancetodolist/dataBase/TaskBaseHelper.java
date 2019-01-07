@@ -21,7 +21,12 @@ public class TaskBaseHelper extends SQLiteOpenHelper {
                 TaskDbSchema.TasksTable.tasksCols.TIME + ", " +
                 TaskDbSchema.TasksTable.tasksCols.DONE + ")"
         );
-
+        db.execSQL(" Create table "+ TaskDbSchema.UsersTable.NAME + "(" +
+                "_id integer primary key autoincrement, " +
+                TaskDbSchema.UsersTable.usersCols.NAME + ", " +
+                TaskDbSchema.UsersTable.usersCols.PASSWORD + ", " +
+                TaskDbSchema.UsersTable.usersCols.EMAIL + ")"
+        );
     }
 
     @Override
