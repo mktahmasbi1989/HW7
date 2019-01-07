@@ -11,26 +11,26 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment {
+public class SignUpFragment extends Fragment {
 
-    public static LoginFragment newInstance() {
+    public static SignUpFragment newInstance() {
 
         Bundle args = new Bundle();
         
-        LoginFragment fragment = new LoginFragment();
+        SignUpFragment fragment = new SignUpFragment();
         fragment.setArguments(args);
         return fragment;
     }
-    public LoginFragment() {
+    public SignUpFragment() {
         // Required empty public constructor
     }
-    
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        return inflater.inflate(R.layout.fragment_sign_up, container, false);
     }
 
 }

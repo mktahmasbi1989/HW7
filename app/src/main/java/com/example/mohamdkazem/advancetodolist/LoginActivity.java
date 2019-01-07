@@ -12,6 +12,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.login_activity,LoginFragment.newInstance()).commit();
+        fragmentManager.beginTransaction().add(R.id.login_activity,WellcomeFragment.newInstance()).commit();
     }
 }
