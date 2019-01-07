@@ -122,7 +122,7 @@ public class TasksRepository {
 //        }
     }
 
-//    public void  removeDoneList(UUID id){
+//    public void  removeDoneList(UUID id){×
 ////        for (int i = 0; i <mDoneTaskList.size() ; i++) {
 ////            if (mDoneTaskList.get(i).getId().equals(id)){
 ////                mDoneTaskList.remove(mDoneTaskList.get(i));

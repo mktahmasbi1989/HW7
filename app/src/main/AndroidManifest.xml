@@ -4,17 +4,19 @@
 
     <application
         android:allowBackup="true"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
         android:icon="@mipmap/ic_list"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_list_round"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ToDoListActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        </activity>
+        <activity android:name=".LoginActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
     </application>
 

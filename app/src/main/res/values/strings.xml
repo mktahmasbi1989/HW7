@@ -19,4 +19,7 @@
     <string name="edite_textView">ویرایش</string>
     <string name="delete_textView">حذف</string>
     <string name="done_textView">انجام شد</string>
+    <string name="sing_in">Sign In</string>
+    <string name="log_in">Log In</string>
+    <string name="skip">Skip</string>
 </resources>
