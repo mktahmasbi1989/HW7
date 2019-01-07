@@ -65,9 +65,17 @@ public class DoneTasksFragment extends Fragment {
         if (mDonJobAdaptor == null) {
             mDonJobAdaptor = new DonJobAdaptor(mListTask);
             mRecyclerView.setAdapter(mDonJobAdaptor);
-        } else mDonJobAdaptor.notifyDataSetChanged();
+        } else
+            mDonJobAdaptor.setTasks(mListTask);
+            mDonJobAdaptor.notifyDataSetChanged();
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        upDateUI();
     }
 
     private class DonJobAdaptor extends RecyclerView.Adapter<DonJobHolder> {
@@ -75,6 +83,9 @@ public class DoneTasksFragment extends Fragment {
 
         DonJobAdaptor(List<Task> tasks) {
             mTasks = tasks;
+        }
+        public void setTasks(List<Task> tasks) {
+            mTasks= tasks;
         }
 
         @NonNull
