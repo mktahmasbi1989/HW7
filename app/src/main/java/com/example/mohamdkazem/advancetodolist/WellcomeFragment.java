@@ -1,6 +1,8 @@
 package com.example.mohamdkazem.advancetodolist;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -40,11 +42,36 @@ public class WellcomeFragment extends Fragment {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.login_activity,SignUpFragment.newInstance()).commit();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.login_activity,SignUpFragment.newInstance(),"signup").commit();
+
+            }
+        });
+
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),ToDoListActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.login_activity,LogInFragment.newInstance()).commit();
             }
         });
 
         return  view;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode==3 && resultCode==Activity.RESULT_OK){
+            btnSignIn.setVisibility(View.INVISIBLE);
+        }
+    }
 }
