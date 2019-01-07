@@ -137,6 +137,11 @@ public class TasksRepository {
 //        mTaskList.add(task);
     }
 
+    public void delete(Task task){
+        String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
+        mDataBase.delete(TaskDbSchema.TasksTable.NAME, whereClause, new String[]{task.getId().toString()});
+    }
+
     public ContentValues getContentValues(Task task){
         ContentValues contentValues=new ContentValues();
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.UUID,task.getId().toString());

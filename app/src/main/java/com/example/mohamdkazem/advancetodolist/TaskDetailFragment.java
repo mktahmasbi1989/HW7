@@ -92,6 +92,7 @@ public class TaskDetailFragment extends Fragment {
 
 //                                TasksRepository.getInstance(getActivity()).removeTask(mTask.getId());
 //                                TasksRepository.getInstance(getActivity().removeDoneList(mTask.getId());
+                                TasksRepository.getInstance(getActivity()).delete(mTask);
                                 updateFragments();
                                 getActivity().getSupportFragmentManager().popBackStack();
 
