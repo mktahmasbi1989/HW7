@@ -26,4 +26,6 @@
     <string name="password">PassWord</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
+    <string name="repeatpass">RepeatPass</string>
+    <string name="repeat_password">Repeat PassWord</string>
 </resources>
