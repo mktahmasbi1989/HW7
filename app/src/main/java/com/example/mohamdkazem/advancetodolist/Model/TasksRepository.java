@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.mohamdkazem.advancetodolist.dataBase.TaskBaseHelper;
 import com.example.mohamdkazem.advancetodolist.dataBase.TaskDbSchema;
@@ -104,7 +103,7 @@ public class TasksRepository {
         mDataBase.delete(TaskDbSchema.TasksTable.NAME, whereClause, new String[]{task.getId().toString()});
     }
 
-    public ContentValues getContentValues(Task task){
+    public ContentValues getContentValuesTasks(Task task){
         ContentValues contentValues=new ContentValues();
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.UUID,task.getId().toString());
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.TITLE,task.getTitle());
@@ -115,8 +114,20 @@ public class TasksRepository {
         return contentValues;
     }
 
+    public ContentValues getContentValuesUsers(Users users){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(TaskDbSchema.UsersTable.usersCols.NAME,users.getName().toString());
+        contentValues.put(TaskDbSchema.UsersTable.usersCols.EMAIL,users.getEmail().toString());
+        contentValues.put(TaskDbSchema.UsersTable.usersCols.PASSWORD,users.getPassword().toString());
+        return contentValues;
+    }
+    public void addUsers(Users user){
+        ContentValues values=getContentValuesUsers(user);
+        mDataBase.insert(TaskDbSchema.UsersTable.NAME,null,values);
+    }
+
     public void addToAllList(Task task) {
-        ContentValues values=getContentValues(task);
+        ContentValues values= getContentValuesTasks(task);
         mDataBase.insert(TaskDbSchema.TasksTable.NAME,null,values);
 
 //        mTaskList.add(task);

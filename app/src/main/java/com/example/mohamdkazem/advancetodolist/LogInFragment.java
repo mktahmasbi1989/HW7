@@ -6,12 +6,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LogInFragment extends Fragment {
+    private Button mBtnLogIn;
+    private EditText mEditTextname,mEditTextPassWord;
 
     public static LogInFragment newInstance() {
 
@@ -31,6 +35,9 @@ public class LogInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_log_in, container, false);
+        mBtnLogIn=view.findViewById(R.id.sing_up);
+        mEditTextname=view.findViewById(R.id.editName);
+        mEditTextPassWord=view.findViewById(R.id.editpass);
 
         return view;
     }

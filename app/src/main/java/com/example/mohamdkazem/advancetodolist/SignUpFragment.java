@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
 import com.example.mohamdkazem.advancetodolist.Model.Users;
 
 
@@ -90,6 +91,7 @@ public class SignUpFragment extends Fragment {
         else if (flag==true){
             Toast.makeText(getActivity(),"Your UserName :"+ userName +"\n"+ "Your PassWord : "+ passWord,Toast.LENGTH_SHORT).show();
             Users users=new Users(userName,passWord,email);
+            TasksRepository.getInstance(getActivity()).addUsers(users);
             getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(3,Activity.RESULT_OK,new Intent());
             getFragmentManager().beginTransaction().replace(R.id.login_activity,WellcomeFragment.newInstance()).commit();
         }
