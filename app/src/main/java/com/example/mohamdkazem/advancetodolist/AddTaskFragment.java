@@ -1,6 +1,8 @@
 package com.example.mohamdkazem.advancetodolist;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -63,7 +65,11 @@ public class AddTaskFragment extends Fragment {
                     String detail= mEditTextDetail.getText().toString();
                     mTask =new Task(title,detail);
                     TasksRepository.getInstance(getActivity()).addToAllList(mTask);
-                    getActivity().getSupportFragmentManager().popBackStack("add",R.id.addJobLayout);
+
+                    getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK,new Intent());
+                    getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0,Activity.RESULT_OK,new Intent());
+
+                    getActivity().getSupportFragmentManager().popBackStack();
                 }
             }
         });
