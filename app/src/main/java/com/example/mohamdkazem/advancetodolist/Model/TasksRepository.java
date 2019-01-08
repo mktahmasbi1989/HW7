@@ -104,12 +104,17 @@ public class TasksRepository {
         String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
         mDataBase.delete(TaskDbSchema.TasksTable.NAME, whereClause, new String[]{task.getId().toString()});
     }
+
+    public void deleteAllTasks(){
+
+        mDataBase.delete(TaskDbSchema.TasksTable.NAME, null, null);
+    }
+
     public void upDate(Task task){
         ContentValues values=getContentValuesTasks(task);
         String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
         mDataBase.update(TaskDbSchema.TasksTable.NAME,values,whereClause, new String[]{task.getId().toString()});
     }
-
 
     public Users getUser(String userName, String passWord) {
 

@@ -1,6 +1,7 @@
 package com.example.mohamdkazem.advancetodolist;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -83,6 +84,9 @@ public class AllTasksFragment extends Fragment {
 
         switch (item.getItemId()) {
             case R.id.delete_all_menu:
+                TasksRepository.getInstance(getActivity()).deleteAllTasks();
+                upDateUI();
+                getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1,Activity.RESULT_OK,new Intent());
                 return  true;
             case R.id.exit_menu:
                 ExitDialog();
