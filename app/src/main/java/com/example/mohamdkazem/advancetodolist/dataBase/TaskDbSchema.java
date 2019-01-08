@@ -19,10 +19,10 @@ public class TaskDbSchema {
     }
 
         public static final class UsersTable {
-
             public static final String NAME = "users";
+
             public static final class usersCols {
-                public static final String NAME = "userName";
+                public static final String USERNAME = "userName";
                 public static final String PASSWORD = "password";
                 public static final String EMAIL="email";
             }

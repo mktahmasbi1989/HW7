@@ -122,6 +122,10 @@ public class TaskDetailFragment extends Fragment {
 //                mTask.setDetail(mTextViewDescribtion.getText().toString());
 //                TasksRepository.getInstance(getActivity()).upDateTask(mTask,mTask.getId());
 //                updateFragments();
+                mTask.setDetail(mTextViewDescribtion.getText().toString());
+                TasksRepository.getInstance(getActivity()).upDate(mTask);
+                getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK,new Intent());
+                getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0,Activity.RESULT_OK,new Intent());
                 getActivity().getSupportFragmentManager().popBackStack();
 
             }
