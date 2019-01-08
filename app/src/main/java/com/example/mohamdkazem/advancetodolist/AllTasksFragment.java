@@ -1,6 +1,8 @@
 package com.example.mohamdkazem.advancetodolist;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +13,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -36,6 +41,7 @@ public class AllTasksFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     public AllTasksFragment() {
@@ -65,6 +71,44 @@ public class AllTasksFragment extends Fragment {
         upDateUI();
         return view;
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.delete_all_menu:
+                return  true;
+            case R.id.exit_menu:
+                ExitDialog();
+                return  true;
+            default:
+                return  super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void ExitDialog() {
+        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("Delete Task")
+                .setMessage("Are You Sure To EXIT?")
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getActivity().finish();
+                    }
+                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                }).create();
+        alertDialog.show();
+    }
+
 
     private void init(View view) {
         mRecyclerView=view.findViewById(R.id.recycleView);
