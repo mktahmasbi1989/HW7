@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:background="#c0d1ba"
     tools:context=".AllTasksFragment"
-    tools:layout_editor_absoluteY="25dp">
+    tools:layout_editor_absoluteY="25dp"
+    >
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleView"

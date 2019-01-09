@@ -32,6 +32,7 @@ import java.util.Objects;
  */
 public class AllTasksFragment extends Fragment {
 
+    private static final String TAG_DIALOG_DETAIL ="task detail" ;
     private RecyclerView mRecyclerView;
     private JobAdaptor mJobAdaptor;
     private FloatingActionButton mFloatingActionButton;
@@ -84,9 +85,8 @@ public class AllTasksFragment extends Fragment {
 
         switch (item.getItemId()) {
             case R.id.delete_all_menu:
-                TasksRepository.getInstance(getActivity()).deleteAllTasks();
-                upDateUI();
-                getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1,Activity.RESULT_OK,new Intent());
+                deleteAllDialog();
+
                 return  true;
             case R.id.exit_menu:
                 ExitDialog();
@@ -97,8 +97,26 @@ public class AllTasksFragment extends Fragment {
         }
     }
 
+    private void deleteAllDialog() {
+        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("Delete ALL Task")
+                .setMessage("Are You Sure To DELET ALL TASKS?")
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        TasksRepository.getInstance(getActivity()).deleteAllTasks();
+                        upDateUI();
+                        getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1,Activity.RESULT_OK,new Intent());
+                    }
+                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                }).create();
+        alertDialog.show();
+    }
+
     private void ExitDialog() {
-        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("Delete Task")
+        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("EXIT")
                 .setMessage("Are You Sure To EXIT?")
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
@@ -175,13 +193,20 @@ public class AllTasksFragment extends Fragment {
             mTitle=itemView.findViewById(R.id.job_title_holder);
             mDetail=itemView.findViewById(R.id.job_detail_holder);
             mFirstChar=itemView.findViewById(R.id.firstChar);
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().
+//                            beginTransaction().addToBackStack("detail")
+//                            .replace(R.id.mainLayout, TaskDetailFragment.newInstance(mTask.getId()))
+//                            .commit();
+//                }
+//            });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().
-                            beginTransaction().addToBackStack("detail")
-                            .replace(R.id.mainLayout, TaskDetailFragment.newInstance(mTask.getId()))
-                            .commit();
+                    ShowTAskDetailDialog showTAskDetailDialog=ShowTAskDetailDialog.newInstance(mTask);
+                    showTAskDetailDialog.show(getFragmentManager(),TAG_DIALOG_DETAIL);
                 }
             });
         }
