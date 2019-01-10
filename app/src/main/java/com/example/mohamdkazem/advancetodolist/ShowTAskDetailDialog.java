@@ -70,8 +70,6 @@ public class ShowTAskDetailDialog extends DialogFragment {
                 Intent intent=TaskDetailActivity.newIntent(getActivity(),mTask);
 //                startActivity(intent);
                 startActivityForResult(intent,REQ_DETAIL);
-
-
             }
         });
 

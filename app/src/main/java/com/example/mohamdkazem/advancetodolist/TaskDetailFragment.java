@@ -16,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.mohamdkazem.advancetodolist.Model.DatePickerDialog;
 import com.example.mohamdkazem.advancetodolist.Model.Task;
 import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
 
@@ -30,10 +33,12 @@ import java.util.UUID;
 public class TaskDetailFragment extends Fragment {
 
     private static final String ARG_JOB_ID = "jobId";
+    private static final String DATE_DIALOG ="date dialog" ;
+    private static final int REQ_COD_DATE = 11;
 
     private Button mBtnEdite,mBtnDelete,mBtnDone;
     private TextView mTextViewDate,mTextViewTime;
-    private EditText mTextViewDescribtion;
+    private EditText mTextViewDescribtion,mTextTextViewTitle;
     private Task mTask;
 
 
@@ -66,12 +71,10 @@ public class TaskDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_task_detail, container, false);
         init(view);
-
+        mTextTextViewTitle.setText(mTask.getTitle());
         mTextViewDescribtion.setText(mTask.getDetail());
         Date date= mTask.getDate();
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        String formatDate=simpleDateFormat.format(date);
-        mTextViewDate.setText(formatDate);
+        setDateInTextView(date);
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat1=new SimpleDateFormat( "h:mm a");
         String formatTime=simpleDateFormat1.format(date);
@@ -80,6 +83,16 @@ public class TaskDetailFragment extends Fragment {
         if (mTask.isDone()){
             mBtnDone.setEnabled(false);
         }
+
+//        show DatePicker Dialog To set Date
+        mTextViewDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog=DatePickerDialog.newInstance(mTask.getDate());
+                datePickerDialog.setTargetFragment(TaskDetailFragment.this,REQ_COD_DATE);
+                datePickerDialog.show(getFragmentManager(),DATE_DIALOG);
+            }
+        });
 
         mBtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +135,7 @@ public class TaskDetailFragment extends Fragment {
 //                mTask.setDetail(mTextViewDescribtion.getText().toString());
 //                TasksRepository.getInstance(getActivity()).upDateTask(mTask,mTask.getId());
 //                updateFragments();
+                mTask.setTitle(mTextTextViewTitle.getText().toString());
                 mTask.setDetail(mTextViewDescribtion.getText().toString());
                 TasksRepository.getInstance(getActivity()).upDate(mTask);
                 Intent intent=new Intent(getActivity(),ToDoListActivity.class);
@@ -148,6 +162,23 @@ public class TaskDetailFragment extends Fragment {
         mTextViewDescribtion=view.findViewById(R.id.textView_description);
         mTextViewDate=view.findViewById(R.id.textView_date);
         mTextViewTime=view.findViewById(R.id.textView_time);
+        mTextTextViewTitle=view.findViewById(R.id.textView_title_detail);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode==REQ_COD_DATE){
+            Date date= (Date) data.getSerializableExtra(DatePickerDialog.EXTRA_DATE);
+            mTask.setDate(date);
+            setDateInTextView(date);
+            TasksRepository.getInstance(getActivity()).upDate(mTask);
+        }
+
+    }
+
+    private void setDateInTextView(Date date) {
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        String formatDate=simpleDateFormat.format(date);
+        mTextViewDate.setText(formatDate);
+    }
 }
