@@ -21,6 +21,7 @@ import java.util.Date;
 
 public class ShowTAskDetailDialog extends DialogFragment {
     private static final String ARG_TASK ="task" ;
+    private static final int REQ_DETAIL =10 ;
     private Task mTask;
     private TextView mTextTitle,mTextTime,mTextDetail,mTextDate;
     private Button mBtnEdit;
@@ -67,7 +68,9 @@ public class ShowTAskDetailDialog extends DialogFragment {
             public void onClick(View v) {
                 dismiss();
                 Intent intent=TaskDetailActivity.newIntent(getActivity(),mTask);
-                startActivity(intent);
+//                startActivity(intent);
+                startActivityForResult(intent,REQ_DETAIL);
+
 
             }
         });

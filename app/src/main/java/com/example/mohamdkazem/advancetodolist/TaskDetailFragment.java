@@ -62,7 +62,7 @@ public class TaskDetailFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_task_detail, container, false);
         init(view);
@@ -124,9 +124,11 @@ public class TaskDetailFragment extends Fragment {
 //                updateFragments();
                 mTask.setDetail(mTextViewDescribtion.getText().toString());
                 TasksRepository.getInstance(getActivity()).upDate(mTask);
-                getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK,new Intent());
-                getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0,Activity.RESULT_OK,new Intent());
-                getActivity().getSupportFragmentManager().popBackStack();
+                Intent intent=new Intent(getActivity(),ToDoListActivity.class);
+                startActivityForResult(intent,0);
+//                getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK,new Intent());
+//                getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0,Activity.RESULT_OK,new Intent());
+//                getActivity().getSupportFragmentManager().popBackStack();
 
             }
         });
