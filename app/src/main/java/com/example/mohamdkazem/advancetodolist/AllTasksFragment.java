@@ -32,7 +32,9 @@ import java.util.Objects;
  */
 public class AllTasksFragment extends Fragment {
 
-    private static final String TAG_DIALOG_DETAIL ="task detail" ;
+    private static final String TAG_DIALOG_DETAIL ="com.example.mohamdkazem.advancetodolist.task detail" ;
+    private static final String ADD_TASK ="com.example.mohamdkazem.advancetodolist.addTask" ;
+    private static final int REQ_ADD_TASK =13 ;
     private RecyclerView mRecyclerView;
     private JobAdaptor mJobAdaptor;
     private FloatingActionButton mFloatingActionButton;
@@ -65,9 +67,14 @@ public class AllTasksFragment extends Fragment {
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.mainLayout, AddTaskFragment.newInstance()).addToBackStack("add")
-                        .commit();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+////                        .replace(R.id.mainLayout, AddTaskFragment.newInstance()).addToBackStack("add")
+////                        .commit();
+//                show AddTask Fragment By Dialog
+                AddTaskFragment addTaskFragment=AddTaskFragment.newInstance();
+                addTaskFragment.setTargetFragment(AllTasksFragment.this,REQ_ADD_TASK);
+                addTaskFragment.show(getFragmentManager(),ADD_TASK);
+
             }
         });
         upDateUI();

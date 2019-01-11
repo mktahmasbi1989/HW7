@@ -31,7 +31,6 @@
     <string name="time">زمان</string>
     <string name="Edit">ویرایش</string>
     <string name="Date">تاریخ</string>
-    <string name="title">عنوان</string>
     <string name="describ">توضیحات</string>
     <string name="suretodelete">مطمئنی میخوای حذف کنی؟</string>
     <string name="deleteTask">حذف</string>
@@ -40,4 +39,7 @@
     <string name="deletealltasks">حذف همه کارها</string>
     <string name="deleteAll">حدف همه</string>
     <string name="Exit">خروج</string>
+    <string name="title">عنوان</string>
+    <string name="desc">جزئیات</string>
+    <string name="add">افزودن</string>
 </resources>

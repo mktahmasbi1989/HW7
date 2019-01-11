@@ -130,9 +130,9 @@ public class TaskDetailFragment extends Fragment {
         mBtnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            mTask.setDone(true);
-                updateFragments();
-                getActivity().getSupportFragmentManager().popBackStack();
+//            mTask.setDone(true);
+//                updateFragments();
+//                getActivity().getSupportFragmentManager().popBackStack();
 
             }
         });

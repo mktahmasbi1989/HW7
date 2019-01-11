@@ -24,6 +24,14 @@ public class Task implements Serializable {
         mTime = new Date().getTime();
     }
 
+    public Task(String mTitle, String mDetail, Date mDate) {
+        this.mTitle = mTitle;
+        this.mDetail = mDetail;
+        this.mDate = mDate;
+        this.mId=UUID.randomUUID();
+        mDone=false;
+    }
+
     public boolean isDone() {
         return mDone;
     }
