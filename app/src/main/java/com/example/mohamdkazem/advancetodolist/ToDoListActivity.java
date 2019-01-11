@@ -30,6 +30,7 @@ public class ToDoListActivity extends AppCompatActivity {
                 } else return DoneTasksFragment.newInstance();
             }
 
+
             @Nullable
             @Override
             public CharSequence getPageTitle(int position) {

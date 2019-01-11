@@ -63,7 +63,7 @@ public class AddTaskFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (mEditTextJobTitle.getText().length()==0){
-                    Toast.makeText(getActivity(),"ENTER Title For Your Task",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),getString(R.string.musttAddTitle),Toast.LENGTH_SHORT).show();
                 }else
                 {
                     String title=mEditTextJobTitle.getText().toString();
