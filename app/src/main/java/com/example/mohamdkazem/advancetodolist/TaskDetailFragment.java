@@ -16,9 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.mohamdkazem.advancetodolist.Model.DatePickerDialog;
 import com.example.mohamdkazem.advancetodolist.Model.Task;
 import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
 
@@ -35,6 +33,8 @@ public class TaskDetailFragment extends Fragment {
     private static final String ARG_JOB_ID = "jobId";
     private static final String DATE_DIALOG ="date dialog" ;
     private static final int REQ_COD_DATE = 11;
+    private static final int REQ_COD_TIME =12 ;
+    private static final String TIME_DIALOG ="time dialog" ;
 
     private Button mBtnEdite,mBtnDelete,mBtnDone;
     private TextView mTextViewDate,mTextViewTime;
@@ -76,9 +76,7 @@ public class TaskDetailFragment extends Fragment {
         Date date= mTask.getDate();
         setDateInTextView(date);
 
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat1=new SimpleDateFormat( "h:mm a");
-        String formatTime=simpleDateFormat1.format(date);
-        mTextViewTime.setText(formatTime);
+        setTimeInTextView(date);
 
         if (mTask.isDone()){
             mBtnDone.setEnabled(false);
@@ -91,6 +89,16 @@ public class TaskDetailFragment extends Fragment {
                 DatePickerDialog datePickerDialog=DatePickerDialog.newInstance(mTask.getDate());
                 datePickerDialog.setTargetFragment(TaskDetailFragment.this,REQ_COD_DATE);
                 datePickerDialog.show(getFragmentManager(),DATE_DIALOG);
+            }
+        });
+
+//        show TimePicker Dialog To set Time
+        mTextViewTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerFragment timePickerFragment=TimePickerFragment.newInstance(mTask.getDate());
+                timePickerFragment.setTargetFragment(TaskDetailFragment.this,REQ_COD_TIME);
+                timePickerFragment.show(getFragmentManager(),TIME_DIALOG);
             }
         });
 
@@ -173,7 +181,20 @@ public class TaskDetailFragment extends Fragment {
             setDateInTextView(date);
             TasksRepository.getInstance(getActivity()).upDate(mTask);
         }
+        if (requestCode==REQ_COD_TIME){
+            Date mdate= (Date) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME_TAG);
+            mTask.setDate(mdate);
+            setTimeInTextView(mdate);
+            TasksRepository.getInstance(getActivity()).upDate(mTask);
 
+        }
+
+    }
+
+    private void setTimeInTextView(Date mdate) {
+        SimpleDateFormat simpleDateFormat1=new SimpleDateFormat( "h:mm a");
+        String formatTime=simpleDateFormat1.format(mdate);
+        mTextViewTime.setText(formatTime);
     }
 
     private void setDateInTextView(Date date) {
