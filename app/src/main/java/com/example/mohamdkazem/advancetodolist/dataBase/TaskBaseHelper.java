@@ -28,7 +28,6 @@ public class TaskBaseHelper extends SQLiteOpenHelper {
                 TaskDbSchema.UsersTable.usersCols.PASSWORD + ", " +
                 TaskDbSchema.UsersTable.usersCols.EMAIL + ")"
         );
-        onCreate(db);
     }
 
     @Override
