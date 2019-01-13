@@ -2,7 +2,7 @@ package com.example.mohamdkazem.advancetodolist.dataBase;
 
 public class TaskDbSchema {
     public static final String NAME = "task.db";
-    public static final int VERSION = 1;
+    public static final int VERSION =3;
 
     public static final class TasksTable {
         public static final String NAME = "tasks";

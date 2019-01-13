@@ -11,9 +11,15 @@ public class TaskBaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
+    public void onOpen(SQLiteDatabase db) {
+        onCreate(db);
+    }
+
+    @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(" Create table "+ TaskDbSchema.TasksTable.NAME + "(" +
-                "_id integer primary key autoincrement, " +
+        db.execSQL(" CREATE TABLE IF NOT EXISTS  " +
+                TaskDbSchema.TasksTable.NAME +
+                "(" + "_id integer primary key autoincrement, " +
                 TaskDbSchema.TasksTable.tasksCols.UUID + ", " +
                 TaskDbSchema.TasksTable.tasksCols.TITLE + ", " +
                 TaskDbSchema.TasksTable.tasksCols.DETAIL + ", " +
@@ -22,8 +28,9 @@ public class TaskBaseHelper extends SQLiteOpenHelper {
                 TaskDbSchema.TasksTable.tasksCols.DONE + ")"
         );
 
-        db.execSQL(" Create table "+ TaskDbSchema.UsersTable.NAME + "(" +
-                "_id integer primary key autoincrement, " +
+        db.execSQL(" CREATE TABLE IF NOT EXISTS  " +
+                TaskDbSchema.UsersTable.NAME +
+                "(" + "_id integer primary key autoincrement, " +
                 TaskDbSchema.UsersTable.usersCols.USERNAME + ", " +
                 TaskDbSchema.UsersTable.usersCols.PASSWORD + ", " +
                 TaskDbSchema.UsersTable.usersCols.EMAIL + ")"

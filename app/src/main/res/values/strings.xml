@@ -42,4 +42,11 @@
     <string name="title">عنوان</string>
     <string name="desc">جزئیات</string>
     <string name="add">افزودن</string>
+    <string name="wrongName">Wrong Name</string>
+    <string name="wrongPassWord">Wrong  PassWord</string>
+    <string name="passDontMatch">PassWord Don\'t Match</string>
+    <string name="wrongEmail">Wrong Email</string>
+    <string name="userNmaeIs">Your UserName :</string>
+    <string name="passwordIs">Your PassWord :</string>
+    <string name="wrongUserPass">Wrong USER OR PASSWORD</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.mohamdkazem.advancetodolist.dataBase.TaskBaseHelper;
 import com.example.mohamdkazem.advancetodolist.dataBase.TaskDbSchema;
@@ -100,28 +101,11 @@ public class TasksRepository {
 //        return null;
     }
 
-    public void delete(Task task) {
-        String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
-        mDataBase.delete(TaskDbSchema.TasksTable.NAME, whereClause, new String[]{task.getId().toString()});
-    }
-
-    public void deleteAllTasks(){
-
-        mDataBase.delete(TaskDbSchema.TasksTable.NAME, null, null);
-    }
-
-    public void upDate(Task task){
-        ContentValues values=getContentValuesTasks(task);
-        String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
-        mDataBase.update(TaskDbSchema.TasksTable.NAME,values,whereClause, new String[]{task.getId().toString()});
-    }
-
     public Users getUser(String userName, String passWord) {
 
         String whereClause = TaskDbSchema.UsersTable.usersCols.USERNAME + " = ? AND " + TaskDbSchema.UsersTable.usersCols.PASSWORD + " = ?";
         String[] whereArgs = new String[]{userName.toString(), passWord.toString()};
         Cursor cursor = mDataBase.query(TaskDbSchema.UsersTable.NAME, null, whereClause, whereArgs, null, null, null, null);
-
 
         try {
             if (cursor.getCount() == 0) {
@@ -138,6 +122,22 @@ public class TasksRepository {
         } finally {
             cursor.close();
         }
+    }
+
+    public void delete(Task task) {
+        String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
+        mDataBase.delete(TaskDbSchema.TasksTable.NAME, whereClause, new String[]{task.getId().toString()});
+    }
+
+    public void deleteAllTasks(){
+
+        mDataBase.delete(TaskDbSchema.TasksTable.NAME, null, null);
+    }
+
+    public void upDate(Task task){
+        ContentValues values=getContentValuesTasks(task);
+        String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
+        mDataBase.update(TaskDbSchema.TasksTable.NAME,values,whereClause, new String[]{task.getId().toString()});
     }
 
     public ContentValues getContentValuesTasks(Task task) {
@@ -167,6 +167,7 @@ public class TasksRepository {
     public void addToAllList(Task task) {
         ContentValues values = getContentValuesTasks(task);
         mDataBase.insert(TaskDbSchema.TasksTable.NAME, null, values);
+
 
     }
 
