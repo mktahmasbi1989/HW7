@@ -1,12 +1,14 @@
 package com.example.mohamdkazem.advancetodolist.Model;
 
+import android.content.Intent;
+
 import java.util.UUID;
 
 public class Users {
     private String name;
     private String password;
     private String email;
-    private UUID userId;
+    private int userId;
 
     public String getName() {
         return name;
@@ -23,22 +25,23 @@ public class Users {
     public String getEmail() {
         return email;
     }
-    public UUID getUserId() {
+    public int getUserId() {
         return userId;
     }
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public Users(String name, String password, String email) {
+    public Users(String name, String password, String email, int id) {
         this.name = name;
         this.password = password;
         this.email = email;
-        userId=UUID.randomUUID();
+        userId=id;
     }
 
-    public Users(String name, String password) {
+    public Users(String name, String password,String emial) {
         this.name = name;
         this.password = password;
+        this.email=emial;
     }
 }

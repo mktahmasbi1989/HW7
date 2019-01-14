@@ -88,7 +88,7 @@ public class SignUpFragment extends Fragment {
             flag=false;
 
         }
-        else if (flag==true){
+        else if (flag){
             Toast.makeText(getActivity(),getString(R.string.UserNmae)+ userName +"\n"+ getString(R.string.passWord)+ passWord,Toast.LENGTH_SHORT).show();
             Users users=new Users(userName,passWord,email);
             TasksRepository.getInstance(getActivity()).addUsers(users);

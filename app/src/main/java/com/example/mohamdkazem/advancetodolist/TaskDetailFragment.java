@@ -114,8 +114,9 @@ public class TaskDetailFragment extends Fragment {
 //                                TasksRepository.getInstance(getActivity()).removeTask(mTask.getId());
 //                                TasksRepository.getInstance(getActivity().removeDoneList(mTask.getId());
                                 TasksRepository.getInstance(getActivity()).delete(mTask);
-                                Intent intent=new Intent(getActivity(),ToDoListActivity.class);
-                                startActivityForResult(intent,0);
+                                Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
+                                startActivity(intent);
+
 
                             }
                         }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
@@ -130,9 +131,9 @@ public class TaskDetailFragment extends Fragment {
         mBtnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            mTask.setDone(true);
-                updateFragments();
-                getActivity().getSupportFragmentManager().popBackStack();
+//            mTask.setDone(true);
+//                updateFragments();
+//                getActivity().getSupportFragmentManager().popBackStack();
 
             }
         });

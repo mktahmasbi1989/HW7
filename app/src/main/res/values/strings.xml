@@ -39,4 +39,5 @@
     <string name="deleteAlla">میخوای همه رو حدف کنی؟</string>
     <string name="deleteAlll">حدف همه</string>
     <string name="Exit">خروج</string>
+    <string name="wrongUserOrPass">نام کاربری یا رمز عبور اشتباه است</string>
 </resources>

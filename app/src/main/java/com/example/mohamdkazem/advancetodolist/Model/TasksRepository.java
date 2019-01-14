@@ -131,8 +131,9 @@ public class TasksRepository {
 
             String name = (cursor.getString(cursor.getColumnIndex(TaskDbSchema.UsersTable.usersCols.USERNAME)));
             String pass = cursor.getString(cursor.getColumnIndex(TaskDbSchema.UsersTable.usersCols.PASSWORD));
-
-            Users user = new Users(name, pass);
+            String email=cursor.getString(cursor.getColumnIndex(TaskDbSchema.UsersTable.usersCols.EMAIL));
+            int id=cursor.getInt(0);
+            Users user = new Users(name, pass,email,id);
             return user;
 
         } finally {
