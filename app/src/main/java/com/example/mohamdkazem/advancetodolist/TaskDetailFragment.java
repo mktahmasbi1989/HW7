@@ -79,7 +79,7 @@ public class TaskDetailFragment extends Fragment {
         setTimeInTextView(date);
 
         if (mTask.isDone()){
-            mBtnDone.setEnabled(false);
+            mBtnDone.setVisibility(View.INVISIBLE);
         }
 
 //        show DatePicker Dialog To set Date
@@ -131,7 +131,10 @@ public class TaskDetailFragment extends Fragment {
         mBtnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//            mTask.setDone(true);
+            mTask.setDone(true);
+            TasksRepository.getInstance(getActivity()).setDoneTask(mTask);
+            Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
+            startActivity(intent);
 //                updateFragments();
 //                getActivity().getSupportFragmentManager().popBackStack();
 
@@ -147,8 +150,8 @@ public class TaskDetailFragment extends Fragment {
                 mTask.setTitle(mTextTextViewTitle.getText().toString());
                 mTask.setDetail(mTextViewDescribtion.getText().toString());
                 TasksRepository.getInstance(getActivity()).upDate(mTask);
-                Intent intent=new Intent(getActivity(),ToDoListActivity.class);
-                startActivityForResult(intent,0);
+                Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
+                startActivity(intent);
 //                getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK,new Intent());
 //                getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0,Activity.RESULT_OK,new Intent());
 //                getActivity().getSupportFragmentManager().popBackStack();
