@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
+
 public class TaskBaseHelper extends SQLiteOpenHelper {
 
     public TaskBaseHelper(Context context) {
@@ -25,7 +27,8 @@ public class TaskBaseHelper extends SQLiteOpenHelper {
                 TaskDbSchema.TasksTable.tasksCols.DETAIL + ", " +
                 TaskDbSchema.TasksTable.tasksCols.DATE + ", " +
                 TaskDbSchema.TasksTable.tasksCols.TIME + ", " +
-                TaskDbSchema.TasksTable.tasksCols.DONE + ")"
+                TaskDbSchema.TasksTable.tasksCols.DONE +
+                ")"
         );
 
         db.execSQL(" CREATE TABLE IF NOT EXISTS "+ TaskDbSchema.UsersTable.NAME + "(" +

@@ -32,7 +32,7 @@ import java.util.Objects;
  */
 public class AllTasksFragment extends Fragment {
 
-    private static final String TAG_DIALOG_DETAIL ="task detail" ;
+    private static final String TAG_DIALOG_DETAIL ="com.example.mohamdkazem.advancetodolist.task detail" ;
     private RecyclerView mRecyclerView;
     private JobAdaptor mJobAdaptor;
     private FloatingActionButton mFloatingActionButton;

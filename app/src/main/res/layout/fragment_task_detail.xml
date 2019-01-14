@@ -5,7 +5,7 @@
     android:id="@+id/detail_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c0d1ba"
+    android:background="@color/ic_launcher_background"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".TaskDetailFragment"
@@ -19,6 +19,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +34,7 @@
         android:layout_marginBottom="16dp"
         android:padding="16dp"
         android:text="عنوان"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView_title_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -47,6 +49,7 @@
         android:layout_marginBottom="16dp"
         android:padding="16dp"
         android:text="توضیحات"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -83,13 +86,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
             tools:text="date :" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/date_textView" />
 
     </LinearLayout>
 
@@ -113,13 +113,10 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold"
             tools:text="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/time_textView" />
 
     </LinearLayout>
 
@@ -139,27 +136,39 @@
             android:id="@+id/btn_edite"
             android:layout_width="13dp"
             android:layout_height="match_parent"
+            android:layout_margin="4dp"
             android:layout_weight="1"
+            android:background="?android:attr/colorSecondary"
             android:drawableStart="@android:drawable/ic_menu_edit"
+            android:padding="4dp"
             android:text="@string/edite_textView"
+            android:textColor="@color/ic_launcher_background"
             android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_delete"
             android:layout_width="47dp"
             android:layout_height="match_parent"
+            android:layout_margin="4dp"
             android:layout_weight="1"
+            android:background="@android:color/holo_red_dark"
             android:drawableStart="@android:drawable/ic_menu_delete"
+            android:padding="4dp"
             android:text="@string/delete_textView"
+            android:textColor="@color/ic_launcher_background"
             android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_done"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_margin="4dp"
             android:layout_weight="1"
+            android:background="@android:color/holo_green_dark"
             android:drawableStart="@android:drawable/checkbox_on_background"
+            android:padding="4dp"
             android:text="@string/done_textView"
+            android:textColor="@color/ic_launcher_background"
             android:textSize="12sp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
