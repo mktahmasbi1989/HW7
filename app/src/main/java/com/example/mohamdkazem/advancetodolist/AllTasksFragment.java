@@ -32,9 +32,7 @@ import java.util.Objects;
  */
 public class AllTasksFragment extends Fragment {
 
-    private static final String TAG_DIALOG_DETAIL ="com.example.mohamdkazem.advancetodolist.task detail" ;
-    private static final String ADD_TASK ="com.example.mohamdkazem.advancetodolist.addTask" ;
-    private static final int REQ_ADD_TASK =13 ;
+    private static final String TAG_DIALOG_DETAIL ="task detail" ;
     private RecyclerView mRecyclerView;
     private JobAdaptor mJobAdaptor;
     private FloatingActionButton mFloatingActionButton;
@@ -67,14 +65,12 @@ public class AllTasksFragment extends Fragment {
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                getActivity().getSupportFragmentManager().beginTransaction()
-////                        .replace(R.id.mainLayout, AddTaskFragment.newInstance()).addToBackStack("add")
-////                        .commit();
-//                show AddTask Fragment By Dialog
-                AddTaskFragment addTaskFragment=AddTaskFragment.newInstance();
-                addTaskFragment.setTargetFragment(AllTasksFragment.this,REQ_ADD_TASK);
-                addTaskFragment.show(getFragmentManager(),ADD_TASK);
 
+                AddTaskFragment addTaskFragment=AddTaskFragment.newInstance();
+                addTaskFragment.show(getFragmentManager(),TAG_DIALOG_DETAIL);
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.mainLayout, AddTaskFragment.newInstance()).addToBackStack("add")
+//                        .commit();
             }
         });
         upDateUI();
@@ -105,16 +101,16 @@ public class AllTasksFragment extends Fragment {
     }
 
     private void deleteAllDialog() {
-        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.deletealltasks))
-                .setMessage("مطممئنی میخوای همه رو حدف کنی؟")
-                .setPositiveButton("بله", new DialogInterface.OnClickListener() {
+        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("Delete ALL Task")
+                .setMessage("Are You Sure To DELET ALL TASKS?")
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         TasksRepository.getInstance(getActivity()).deleteAllTasks();
                         upDateUI();
                         getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1,Activity.RESULT_OK,new Intent());
                     }
-                }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
@@ -123,14 +119,14 @@ public class AllTasksFragment extends Fragment {
     }
 
     private void ExitDialog() {
-        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.exit))
-                .setMessage("مطمئنی میخوای بری؟")
-                .setPositiveButton("بله", new DialogInterface.OnClickListener() {
+        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("EXIT")
+                .setMessage("Are You Sure To EXIT?")
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         getActivity().finish();
                     }
-                }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }

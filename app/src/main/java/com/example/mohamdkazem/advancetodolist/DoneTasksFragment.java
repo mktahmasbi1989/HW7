@@ -58,7 +58,6 @@ public class DoneTasksFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recycleView);
         floatingActionButton=view.findViewById(R.id.btn_action);
         floatingActionButton.setVisibility(View.INVISIBLE);
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         upDateUI();
         return view;

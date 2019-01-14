@@ -5,12 +5,11 @@
     android:id="@+id/detail_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    android:background="#c0d1ba"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".TaskDetailFragment"
-    tools:layout_editor_absoluteY="81dp"
-    >
+    tools:layout_editor_absoluteY="81dp">
 
 
     <EditText
@@ -19,12 +18,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="28dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="description" />
 
@@ -36,8 +32,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:padding="16dp"
-        android:text="@string/title"
-        android:textSize="24sp"
+        android:text="عنوان"
         app:layout_constraintBottom_toTopOf="@+id/textView_title_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -49,13 +44,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:padding="16dp"
-        android:text="@string/describ"
-        android:textSize="20sp"
+        android:text="توضیحات"
         app:layout_constraintBottom_toTopOf="@+id/textView_description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -64,12 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="12dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="description" />
 
@@ -93,17 +83,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp"
-            android:textStyle="bold"
             tools:text="date :" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/date_textView"
-            android:textSize="20sp" />
+            android:text="@string/date_textView" />
 
     </LinearLayout>
 
@@ -113,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="64dp"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
@@ -127,17 +113,13 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
-            android:textStyle="bold"
             tools:text="time" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/time_textView"
-            android:textSize="20sp" />
+            android:text="@string/time_textView" />
 
     </LinearLayout>
 
@@ -147,7 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,41 +139,27 @@
             android:id="@+id/btn_edite"
             android:layout_width="13dp"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
             android:drawableStart="@android:drawable/ic_menu_edit"
-            android:padding="8dp"
             android:text="@string/edite_textView"
-            android:textColor="@android:color/background_light"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_delete"
-            style="@style/Widget.AppCompat.Button"
             android:layout_width="47dp"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_red_dark"
             android:drawableStart="@android:drawable/ic_menu_delete"
             android:text="@string/delete_textView"
-            android:textColor="@android:color/background_light"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_done"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_green_light"
             android:drawableStart="@android:drawable/checkbox_on_background"
             android:text="@string/done_textView"
-            android:textColor="@android:color/background_light"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textSize="12sp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

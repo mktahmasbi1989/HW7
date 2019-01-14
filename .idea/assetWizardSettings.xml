@@ -35,8 +35,10 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="f6faff" />
+                                      <entry key="backgroundLayerName" value="ic_launcher_background" />
                                       <entry key="foregroundImage" value="D:\Andriod project\HW7\icons8-todo-list-208.png" />
                                       <entry key="foregroundLayerName" value="ic_launcher_to_to" />
+                                      <entry key="outputName" value="ic_to_to_list" />
                                     </map>
                                   </option>
                                 </PersistentState>

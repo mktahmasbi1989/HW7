@@ -47,17 +47,16 @@ public class LogInFragment extends Fragment {
         mBtnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userName = mEditTextname.getText().toString().trim();
-                String passWord = mEditTextPassWord.getText().toString().trim();
+//                String userName=mEditTextname.getText().toString().trim();
+//                String passWord=mEditTextPassWord.getText().toString().trim();
+//
+//                Users users=TasksRepository.getInstance(getActivity()).getUser(userName,passWord);
+//                if (!(users.getName().equals(userName) && users.getPassword().equals(passWord))){
+//                    Toast.makeText(getActivity(),"Ok",Toast.LENGTH_SHORT).show();
+//                }else Toast.makeText(getActivity(),"Nooo",Toast.LENGTH_SHORT).show();
 
-                Users users = TasksRepository.getInstance(getActivity()).getUser(userName, passWord);
-                if (users != null) {
-                    if ((users.getName().equals(userName) && users.getPassword().equals(passWord))) {
-                        Intent intent=ToDoListActivity.newIntent(getActivity(), users.getmId());
-                        startActivity(intent);
-
-                }
-                }else Toast.makeText(getActivity(), getString(R.string.wrongUserPass), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getActivity(),ToDoListActivity.class);
+                startActivity(intent);
             }
         });
 

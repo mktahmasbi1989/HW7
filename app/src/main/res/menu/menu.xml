@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/exit_menu"
-        android:title="@string/Exit"
+        android:id="@+id/delete_all_menu"
+        android:title="DELETE ALL"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/delete_all_menu"
-        android:title="@string/deleteAll"
+        android:id="@+id/exit_menu"
+        android:title="Exit"
         app:showAsAction="ifRoom"/>
 </menu>

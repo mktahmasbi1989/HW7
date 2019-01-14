@@ -24,14 +24,6 @@ public class Task implements Serializable {
         mTime = new Date().getTime();
     }
 
-    public Task(String mTitle, String mDetail, Date mDate) {
-        this.mTitle = mTitle;
-        this.mDetail = mDetail;
-        this.mDate = mDate;
-        this.mId=UUID.randomUUID();
-        mDone=false;
-    }
-
     public boolean isDone() {
         return mDone;
     }
@@ -40,17 +32,17 @@ public class Task implements Serializable {
         mDone = done;
     }
 
-    public Task(String title, String detail) {
+    public Task(String title, String detail, Date date) {
         mTitle = title;
         if (detail == null) {
             mDetail = "";
         } else mDetail = detail;
         mId = UUID.randomUUID();
-        mDate = new Date();
+        mDate = date;
         mDone = false;
-        mTime = new Date().getTime();
-    }
+        mTime = date.getTime();
 
+    }
 
     public Date getDate() {
         return mDate;

@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">Advance To Do List</string>
+    <string name="app_name">To Do List</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="description">توضیحات :</string>
+    <string name="description">جزئیات :</string>
     <string name="date">تاریخ</string>
+    <string name="time">زمان</string>
     <string name="edite">ویرایش</string>
     <string name="delete">حدف</string>
-    <string name="done"> انجام شد</string>
-    <string name="job_title">Job Title</string>
+    <string name="done">انجام شد</string>
+    <string name="job_title">عنوان</string>
     <string name="details">جزئیات</string>
     <string name="add_job">اضافه کردن</string>
     <string name="Title">عنوان</string>
@@ -18,35 +19,13 @@
     <string name="edite_textView">ویرایش</string>
     <string name="delete_textView">حذف</string>
     <string name="done_textView">انجام شد</string>
-    <string name="sing_in">عضویت</string>
-    <string name="log_in"> ورود</string>
+    <string name="sing_in">ثبت نام</string>
+    <string name="log_in">ورود</string>
     <string name="skip">بیخیال</string>
-    <string name="sign_up">عضویت</string>
+    <string name="sign_up">ثبت نام</string>
     <string name="password">رمز عبور</string>
     <string name="name">نام</string>
     <string name="email">ایمیل</string>
     <string name="repeatpass">تکرار رمز عبور</string>
-    <string name="repeat_password">تکرار رمز عبور</string>
-    <string name="describtion">توضیحات</string>
-    <string name="time">زمان</string>
-    <string name="Edit">ویرایش</string>
-    <string name="Date">تاریخ</string>
-    <string name="describ">توضیحات</string>
-    <string name="suretodelete">مطمئنی میخوای حذف کنی؟</string>
-    <string name="deleteTask">حذف</string>
-    <string name="musttAddTitle">عنوان را وارد کنید</string>
-    <string name="exit">خروج</string>
-    <string name="deletealltasks">حذف همه کارها</string>
-    <string name="deleteAll">حدف همه</string>
-    <string name="Exit">خروج</string>
-    <string name="title">عنوان</string>
-    <string name="desc">جزئیات</string>
-    <string name="add">افزودن</string>
-    <string name="wrongName">Wrong Name</string>
-    <string name="wrongPassWord">Wrong  PassWord</string>
-    <string name="passDontMatch">PassWord Don\'t Match</string>
-    <string name="wrongEmail">Wrong Email</string>
-    <string name="userNmaeIs">Your UserName :</string>
-    <string name="passwordIs">Your PassWord :</string>
-    <string name="wrongUserPass">Wrong USER OR PASSWORD</string>
+    <string name="repeat_password"> تکرار رمز عبور</string>
 </resources>

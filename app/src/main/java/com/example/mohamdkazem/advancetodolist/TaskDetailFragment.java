@@ -105,9 +105,9 @@ public class TaskDetailFragment extends Fragment {
         mBtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.deleteTask))
-                        .setMessage(getString(R.string.suretodelete))
-                        .setPositiveButton("تایید", new DialogInterface.OnClickListener() {
+                AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("Delete Task")
+                        .setMessage("Do You Want to Delete?")
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -118,7 +118,7 @@ public class TaskDetailFragment extends Fragment {
                                 startActivityForResult(intent,0);
 
                             }
-                        }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }
@@ -130,9 +130,9 @@ public class TaskDetailFragment extends Fragment {
         mBtnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//            mTask.setDone(true);
-//                updateFragments();
-//                getActivity().getSupportFragmentManager().popBackStack();
+            mTask.setDone(true);
+                updateFragments();
+                getActivity().getSupportFragmentManager().popBackStack();
 
             }
         });

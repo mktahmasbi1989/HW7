@@ -12,27 +12,24 @@ public class TaskBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
         onCreate(db);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(" CREATE TABLE IF NOT EXISTS  " +
-                TaskDbSchema.TasksTable.NAME +
-                "(" + "_id integer primary key autoincrement, " +
+        db.execSQL(" CREATE TABLE IF NOT EXISTS "+ TaskDbSchema.TasksTable.NAME + "(" +
+                "_id integer primary key autoincrement, " +
                 TaskDbSchema.TasksTable.tasksCols.UUID + ", " +
                 TaskDbSchema.TasksTable.tasksCols.TITLE + ", " +
                 TaskDbSchema.TasksTable.tasksCols.DETAIL + ", " +
                 TaskDbSchema.TasksTable.tasksCols.DATE + ", " +
                 TaskDbSchema.TasksTable.tasksCols.TIME + ", " +
-                TaskDbSchema.TasksTable.tasksCols.DONE + ", " +
-                TaskDbSchema.TasksTable.tasksCols.USER_ID + ")"
-//                " FOREIGN  KEY (USER_ID) REFERENCES " + TaskDbSchema.UsersTable.usersCols.ID + ")"
+                TaskDbSchema.TasksTable.tasksCols.DONE + ")"
         );
 
-        db.execSQL(" CREATE TABLE IF NOT EXISTS  " +
-                TaskDbSchema.UsersTable.NAME +
-                "(" + "_id integer primary key autoincrement, "  +
+        db.execSQL(" CREATE TABLE IF NOT EXISTS "+ TaskDbSchema.UsersTable.NAME + "(" +
+                "_id integer primary key autoincrement, " +
                 TaskDbSchema.UsersTable.usersCols.USERNAME + ", " +
                 TaskDbSchema.UsersTable.usersCols.PASSWORD + ", " +
                 TaskDbSchema.UsersTable.usersCols.EMAIL + ")"

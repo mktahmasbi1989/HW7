@@ -50,8 +50,7 @@
             android:layout_weight="4"
             android:hint="@string/password"
 
-            android:inputType="textPassword"
-            android:padding="8dp" />
+            android:inputType="textPassword" />
 
     </LinearLayout>
 
@@ -63,7 +62,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="128dp"
         android:background="@android:color/holo_green_light"
-        android:padding="16dp"
         android:text="@string/log_in"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"

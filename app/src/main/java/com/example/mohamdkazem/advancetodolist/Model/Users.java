@@ -1,31 +1,12 @@
 package com.example.mohamdkazem.advancetodolist.Model;
 
+import java.util.UUID;
+
 public class Users {
     private String name;
     private String password;
     private String email;
-
-    public int getmId() {
-        return mId;
-    }
-
-    private int mId;
-
-
-
-    public Users(String userName, String passWord, String email) {
-        this.name = userName;
-        this.password = passWord;
-        this.email = email;
-
-    }
-
-    public Users(String name, String password, String email, int mId) {
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.mId = mId;
-    }
+    private UUID userId;
 
     public String getName() {
         return name;
@@ -42,9 +23,22 @@ public class Users {
     public String getEmail() {
         return email;
     }
+    public UUID getUserId() {
+        return userId;
+    }
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public Users(String name, String password, String email) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        userId=UUID.randomUUID();
+    }
 
+    public Users(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 }

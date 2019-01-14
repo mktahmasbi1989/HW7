@@ -6,15 +6,13 @@ import android.os.Bundle;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG_WELLCOME = "com.example.mohamdkazem.advancetodolist.wellcomm";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.login_activity,WellcomeFragment.newInstance(),TAG_WELLCOME).commit();
+        fragmentManager.beginTransaction().add(R.id.login_activity,WellcomeFragment.newInstance(),"wellcome").commit();
     }
 
 }
