@@ -15,6 +15,7 @@ import android.widget.Button;
  * A simple {@link Fragment} subclass.
  */
 public class WellcomeFragment extends Fragment {
+    private static final String TAG_SIGN_UP = "com.example.mohamdkazem.advancetodolistsign_up";
     private Button btnSignIn,btnLogIn,btnSkip;
 
     public static WellcomeFragment newInstance() {
@@ -43,7 +44,7 @@ public class WellcomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.login_activity,SignUpFragment.newInstance(),"signup").commit();
+                        .replace(R.id.login_activity,SignUpFragment.newInstance(),TAG_SIGN_UP).commit();
 
             }
         });

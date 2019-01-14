@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class TaskDetailActivity extends AppCompatActivity {
-    private static final String TASK_RESIVE ="task" ;
+    private static final String TASK_RESIVE ="com.example.mohamdkazem.advancetodolist.task" ;
     private Task mTask;
 
 

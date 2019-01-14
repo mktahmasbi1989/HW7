@@ -30,11 +30,11 @@ import java.util.UUID;
  */
 public class TaskDetailFragment extends Fragment {
 
-    private static final String ARG_JOB_ID = "jobId";
-    private static final String DATE_DIALOG ="date dialog" ;
+    private static final String ARG_JOB_ID = "com.example.mohamdkazem.advancetodolist.jobId";
+    private static final String DATE_DIALOG ="com.example.mohamdkazem.advancetodolist.date dialog" ;
     private static final int REQ_COD_DATE = 11;
     private static final int REQ_COD_TIME =12 ;
-    private static final String TIME_DIALOG ="time dialog" ;
+    private static final String TIME_DIALOG ="com.example.mohamdkazem.advancetodolist.time dialog" ;
 
     private Button mBtnEdite,mBtnDelete,mBtnDone;
     private TextView mTextViewDate,mTextViewTime;
@@ -105,9 +105,9 @@ public class TaskDetailFragment extends Fragment {
         mBtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("Delete Task")
-                        .setMessage("Do You Want to Delete?")
-                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.delete))
+                        .setMessage(getString(R.string.deleteAlla))
+                        .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -118,7 +118,7 @@ public class TaskDetailFragment extends Fragment {
                                 startActivityForResult(intent,0);
 
                             }
-                        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }

@@ -71,25 +71,25 @@ public class SignUpFragment extends Fragment {
 
         if (userName.length()==0){
             flag=false;
-            Toast.makeText(getActivity(),"Wrong Name",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),getString(R.string.enterNmae),Toast.LENGTH_SHORT).show();
         }
         if (passWord.length()==0 || repeatPass.length()==0){
-            Toast.makeText(getActivity(),"Wrong  PassWord",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),getString(R.string.enterPass),Toast.LENGTH_SHORT).show();
             flag=false;
 
         }
         if (!passWord.equals(repeatPass)){
-            Toast.makeText(getActivity(),"PassWord Don't Match",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),getString(R.string.enterPassRepeate),Toast.LENGTH_SHORT).show();
             flag=false;
 
         }
         if (!email.matches(emailPattern)){
-            Toast.makeText(getActivity(),"Wrong Email",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),getString(R.string.enterEmail),Toast.LENGTH_SHORT).show();
             flag=false;
 
         }
         else if (flag==true){
-            Toast.makeText(getActivity(),"Your UserName :"+ userName +"\n"+ "Your PassWord : "+ passWord,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),getString(R.string.UserNmae)+ userName +"\n"+ getString(R.string.passWord)+ passWord,Toast.LENGTH_SHORT).show();
             Users users=new Users(userName,passWord,email);
             TasksRepository.getInstance(getActivity()).addUsers(users);
             getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(3,Activity.RESULT_OK,new Intent());

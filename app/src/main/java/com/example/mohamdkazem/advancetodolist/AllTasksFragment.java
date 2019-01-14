@@ -101,16 +101,16 @@ public class AllTasksFragment extends Fragment {
     }
 
     private void deleteAllDialog() {
-        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("Delete ALL Task")
-                .setMessage("Are You Sure To DELET ALL TASKS?")
-                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.deleteAll))
+                .setMessage("مطمنی میخوای همو را حذف کنی؟")
+                .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         TasksRepository.getInstance(getActivity()).deleteAllTasks();
                         upDateUI();
                         getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1,Activity.RESULT_OK,new Intent());
                     }
-                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
@@ -119,14 +119,14 @@ public class AllTasksFragment extends Fragment {
     }
 
     private void ExitDialog() {
-        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle("EXIT")
-                .setMessage("Are You Sure To EXIT?")
-                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        AlertDialog alertDialog=new AlertDialog.Builder(getActivity()).setTitle(getString(R.string.Exit))
+                .setMessage("مطمئنی میخوای خارج بشی؟")
+                .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         getActivity().finish();
                     }
-                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }

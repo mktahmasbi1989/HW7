@@ -28,4 +28,15 @@
     <string name="email">ایمیل</string>
     <string name="repeatpass">تکرار رمز عبور</string>
     <string name="repeat_password"> تکرار رمز عبور</string>
+    <string name="enterTiltle">عنوان را وارد کنید</string>
+    <string name="deleteAll">حذف همه</string>
+    <string name="Exit">خروج</string>
+    <string name="enterNmae">نام  را درست وارد کنید</string>
+    <string name="enterPass">رمز عبور را درست وارد کنید</string>
+    <string name="enterPassRepeate">رمز عبور درست وارد نشده است</string>
+    <string name="enterEmail">ایمیل را درست وارد کنید</string>
+    <string name="UserNmae">نام کاربری :</string>
+    <string name="passWord">رمز عبور :</string>
+    <string name="deleteAlla">میخوای همه رو حدف کنی؟</string>
+    <string name="delete">حدف</string>
 </resources>

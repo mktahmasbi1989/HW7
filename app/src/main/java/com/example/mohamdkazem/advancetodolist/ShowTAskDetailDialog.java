@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ShowTAskDetailDialog extends DialogFragment {
-    private static final String ARG_TASK ="task" ;
+    private static final String ARG_TASK ="com.example.mohamdkazem.advancetodolist.task" ;
     private static final int REQ_DETAIL =10 ;
     private Task mTask;
     private TextView mTextTitle,mTextTime,mTextDetail,mTextDate;

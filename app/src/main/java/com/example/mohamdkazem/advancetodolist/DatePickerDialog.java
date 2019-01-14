@@ -16,11 +16,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DatePickerDialog extends DialogFragment {
-    public static final String EXTRA_DATE ="date_extra" ;
+    public static final String EXTRA_DATE ="com.example.mohamdkazem.advancetodolist.date_extra" ;
+    private static final String ARG_DATE ="com.example.mohamdkazem.advancetodolist.Model.date" ;
     private Date mDate;
     private DatePicker mDatePicker;
 
-    private static final String ARG_DATE ="com.example.mohamdkazem.advancetodolist.Model.date" ;
 
     public static DatePickerDialog newInstance(Date date) {
 
@@ -57,7 +57,7 @@ public class DatePickerDialog extends DialogFragment {
 
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setTitle("DATE")
+                .setTitle("تاریخ")
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
