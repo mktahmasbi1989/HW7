@@ -19,6 +19,7 @@ public class TasksRepository {
     private SQLiteDatabase mDataBase;
     private static TasksRepository tasksRepository;
     private Context mContext;
+    public static int id = 1;
 
     private TasksRepository(Context context) {
         mContext = context.getApplicationContext();
@@ -112,11 +113,12 @@ public class TasksRepository {
                 return null;
             }
             cursor.moveToFirst();
-
+            int id = cursor.getInt(0);
             String name = (cursor.getString(cursor.getColumnIndex(TaskDbSchema.UsersTable.usersCols.USERNAME)));
             String pass = cursor.getString(cursor.getColumnIndex(TaskDbSchema.UsersTable.usersCols.PASSWORD));
+            String email = cursor.getString(cursor.getColumnIndex(TaskDbSchema.UsersTable.usersCols.EMAIL));
 
-            Users user = new Users(name, pass);
+            Users user = new Users(name, pass, email,id);
             return user;
 
         } finally {
@@ -129,15 +131,15 @@ public class TasksRepository {
         mDataBase.delete(TaskDbSchema.TasksTable.NAME, whereClause, new String[]{task.getId().toString()});
     }
 
-    public void deleteAllTasks(){
+    public void deleteAllTasks() {
 
         mDataBase.delete(TaskDbSchema.TasksTable.NAME, null, null);
     }
 
-    public void upDate(Task task){
-        ContentValues values=getContentValuesTasks(task);
+    public void upDate(Task task) {
+        ContentValues values = getContentValuesTasks(task);
         String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";
-        mDataBase.update(TaskDbSchema.TasksTable.NAME,values,whereClause, new String[]{task.getId().toString()});
+        mDataBase.update(TaskDbSchema.TasksTable.NAME, values, whereClause, new String[]{task.getId().toString()});
     }
 
     public ContentValues getContentValuesTasks(Task task) {
@@ -148,10 +150,12 @@ public class TasksRepository {
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.DATE, task.getDate().getTime());
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.TIME, task.getTime());
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.DONE, task.isDone() ? 1 : 0);
+//        contentValues.put(TaskDbSchema.TasksTable.tasksCols.USER_ID,);
         return contentValues;
     }
 
     public ContentValues getContentValuesUsers(Users users) {
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(TaskDbSchema.UsersTable.usersCols.USERNAME, users.getName().toString());
         contentValues.put(TaskDbSchema.UsersTable.usersCols.EMAIL, users.getEmail().toString());
@@ -162,6 +166,7 @@ public class TasksRepository {
     public void addUsers(Users user) {
         ContentValues values = getContentValuesUsers(user);
         mDataBase.insert(TaskDbSchema.UsersTable.NAME, null, values);
+
     }
 
     public void addToAllList(Task task) {
@@ -173,6 +178,12 @@ public class TasksRepository {
 
     public List<Task> getDoneList() {
         return new ArrayList<>();
+    }
+
+    public static int UserId(int mId) {
+        mId = id;
+        id++;
+        return mId;
     }
 }
 

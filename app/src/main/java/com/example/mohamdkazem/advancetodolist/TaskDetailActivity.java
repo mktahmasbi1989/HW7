@@ -18,9 +18,7 @@ public class TaskDetailActivity extends AppCompatActivity {
     public static Intent newIntent(Context context, Task task){
         Intent intent=new Intent(context,TaskDetailActivity.class);
         intent.putExtra(TASK_RESIVE,task);
-
         return intent;
-
     }
 
     @Override

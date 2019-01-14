@@ -25,12 +25,14 @@ public class TaskBaseHelper extends SQLiteOpenHelper {
                 TaskDbSchema.TasksTable.tasksCols.DETAIL + ", " +
                 TaskDbSchema.TasksTable.tasksCols.DATE + ", " +
                 TaskDbSchema.TasksTable.tasksCols.TIME + ", " +
-                TaskDbSchema.TasksTable.tasksCols.DONE + ")"
+                TaskDbSchema.TasksTable.tasksCols.DONE + ", " +
+                TaskDbSchema.TasksTable.tasksCols.USER_ID + ")"
+//                " FOREIGN  KEY (USER_ID) REFERENCES " + TaskDbSchema.UsersTable.usersCols.ID + ")"
         );
 
         db.execSQL(" CREATE TABLE IF NOT EXISTS  " +
                 TaskDbSchema.UsersTable.NAME +
-                "(" + "_id integer primary key autoincrement, " +
+                "(" + "_id integer primary key autoincrement, "  +
                 TaskDbSchema.UsersTable.usersCols.USERNAME + ", " +
                 TaskDbSchema.UsersTable.usersCols.PASSWORD + ", " +
                 TaskDbSchema.UsersTable.usersCols.EMAIL + ")"

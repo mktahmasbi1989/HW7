@@ -89,8 +89,11 @@ public class SignUpFragment extends Fragment {
         }
         else if (flag){
             Toast.makeText(getActivity(),getString(R.string.userNmaeIs)+ userName +"\n"+ getString(R.string.passwordIs)+ passWord,Toast.LENGTH_SHORT).show();
+
             Users users=new Users(userName,passWord,email);
             TasksRepository.getInstance(getActivity()).addUsers(users);
+
+
             getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(3,Activity.RESULT_OK,new Intent());
             getFragmentManager().beginTransaction().replace(R.id.login_activity,WellcomeFragment.newInstance()).commit();
         }

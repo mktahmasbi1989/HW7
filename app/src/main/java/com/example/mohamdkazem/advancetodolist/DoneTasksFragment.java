@@ -31,6 +31,7 @@ import java.util.Objects;
 public class DoneTasksFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private DonJobAdaptor mDonJobAdaptor;
+    private FloatingActionButton floatingActionButton;
 
     public DoneTasksFragment() {
         // Required empty public constructor
@@ -49,11 +50,15 @@ public class DoneTasksFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_tasks, container, false);
         mRecyclerView = view.findViewById(R.id.recycleView);
+        floatingActionButton=view.findViewById(R.id.btn_action);
+        floatingActionButton.setVisibility(View.INVISIBLE);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         upDateUI();
         return view;

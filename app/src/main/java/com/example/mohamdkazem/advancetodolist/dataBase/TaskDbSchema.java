@@ -14,6 +14,7 @@ public class TaskDbSchema {
             public static final String DATE = "date";
             public static final String DONE = "done";
             public static final String TIME = "time";
+            public static final String USER_ID ="userId";
 
         }
     }
@@ -25,6 +26,7 @@ public class TaskDbSchema {
                 public static final String USERNAME = "userName";
                 public static final String PASSWORD = "password";
                 public static final String EMAIL="email";
+                public static final String ID="id";
             }
 
         }
