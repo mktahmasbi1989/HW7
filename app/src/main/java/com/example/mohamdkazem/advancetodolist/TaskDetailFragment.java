@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -61,8 +62,9 @@ public class TaskDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         assert getArguments() != null;
         UUID jobId= (UUID) getArguments().getSerializable(ARG_JOB_ID);
-        mTask = TasksRepository.getInstance(getActivity()).getTask(jobId);
-
+        if (ToDoListActivity.mId>0) {
+            mTask = TasksRepository.getInstance(getActivity()).getTask(jobId);
+        }else mTask=TasksRepository.getInstance(getActivity()).getTaskGuest(jobId);
     }
 
 
@@ -111,11 +113,16 @@ public class TaskDetailFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-//                                TasksRepository.getInstance(getActivity()).removeTask(mTask.getId());
-//                                TasksRepository.getInstance(getActivity().removeDoneList(mTask.getId());
-                                TasksRepository.getInstance(getActivity()).delete(mTask);
-                                Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
-                                startActivity(intent);
+                                if (ToDoListActivity.mId>0){
+                                    TasksRepository.getInstance(getActivity()).delete(mTask);
+                                    Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
+                                    startActivity(intent);
+                                }else {
+                                    TasksRepository.getInstance(getActivity()).removeTask(mTask);
+                                    Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
+                                    startActivity(intent);
+                                }
+
 
 
                             }

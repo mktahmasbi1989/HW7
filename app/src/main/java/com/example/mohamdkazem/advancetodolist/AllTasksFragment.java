@@ -143,17 +143,32 @@ public class AllTasksFragment extends Fragment {
     }
 
     private void upDateUI() {
-        List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskList();
-        if (mListTask.size()==0)
-        {
-            mTextViewNoTask.setVisibility(View.VISIBLE);
-        }
-        if (mJobAdaptor==null){
-            mJobAdaptor=new JobAdaptor(mListTask);
-            mRecyclerView.setAdapter(mJobAdaptor);
-        }else
-            mJobAdaptor.setTasks(mListTask);
+        if (ToDoListActivity.mId > 0) {
+            List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskList();
+            if (mListTask.size() == 0) {
+                mTextViewNoTask.setVisibility(View.VISIBLE);
+            }
+            if (mJobAdaptor == null) {
+                mJobAdaptor = new JobAdaptor(mListTask);
+                mRecyclerView.setAdapter(mJobAdaptor);
+            } else
+                mJobAdaptor.setTasks(mListTask);
             mJobAdaptor.notifyDataSetChanged();
+        }
+        else {
+            List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskListGuest();
+            if (mListTask.size() == 0) {
+                mTextViewNoTask.setVisibility(View.VISIBLE);
+            }
+            if (mJobAdaptor == null) {
+                mJobAdaptor = new JobAdaptor(mListTask);
+                mRecyclerView.setAdapter(mJobAdaptor);
+            } else
+                mJobAdaptor.setTasks(mListTask);
+            mJobAdaptor.notifyDataSetChanged();
+
+        }
+
     }
 
     private class JobAdaptor extends RecyclerView.Adapter<JobHolder>{

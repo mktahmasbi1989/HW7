@@ -65,15 +65,25 @@ public class DoneTasksFragment extends Fragment {
 
 
     private void upDateUI() {
-        List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskList();
-        if (mDonJobAdaptor == null) {
-            mDonJobAdaptor = new DonJobAdaptor(mListTask);
-            mRecyclerView.setAdapter(mDonJobAdaptor);
-        } else
-            mDonJobAdaptor.setTasks(mListTask);
+        if (ToDoListActivity.mId>0) {
+            List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskList();
+            if (mDonJobAdaptor == null) {
+                mDonJobAdaptor = new DonJobAdaptor(mListTask);
+                mRecyclerView.setAdapter(mDonJobAdaptor);
+            } else
+                mDonJobAdaptor.setTasks(mListTask);
             mDonJobAdaptor.notifyDataSetChanged();
 
+        }else {
+            List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskListGuest();
+            if (mDonJobAdaptor == null) {
+                mDonJobAdaptor = new DonJobAdaptor(mListTask);
+                mRecyclerView.setAdapter(mDonJobAdaptor);
+            } else
+                mDonJobAdaptor.setTasks(mListTask);
+            mDonJobAdaptor.notifyDataSetChanged();
 
+        }
     }
 
     @Override
