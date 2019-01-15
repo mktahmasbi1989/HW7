@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.mohamdkazem.advancetodolist.ToDoListActivity;
 import com.example.mohamdkazem.advancetodolist.dataBase.TaskBaseHelper;
 import com.example.mohamdkazem.advancetodolist.dataBase.TaskDbSchema;
 
@@ -37,7 +38,9 @@ public class TasksRepository {
     public List<Task> getTaskList() {
 //        return mTaskList;
         List<Task> taskList = new ArrayList<>();
-        Cursor cursor = mDataBase.query(TaskDbSchema.TasksTable.NAME, null, null, null, null, null, null, null);
+        String whereClause = TaskDbSchema.TasksTable.tasksCols.USER_ID + " = " + ToDoListActivity.mId;
+//        String[] whereArgs = new String[]{String.valueOf(ToDoListActivity.mId)};
+        Cursor cursor = mDataBase.query(TaskDbSchema.TasksTable.NAME, null, whereClause, null, null, null, null, null);
 
         try {
             cursor.moveToFirst();
@@ -65,10 +68,10 @@ public class TasksRepository {
     }
     public List<Task> getDoneTaskList(){
         List<Task> taskList = new ArrayList<>();
-        String whereClause = TaskDbSchema.TasksTable.tasksCols.DONE + " = ?";
-        String[] whereArgs = new String[]{"1"};
+        String whereClause = TaskDbSchema.TasksTable.tasksCols.DONE + " = " + 1 ;
+//        String[] whereArgs = new String[]{"1"};
 
-        Cursor cursor = mDataBase.query(TaskDbSchema.TasksTable.NAME, null, whereClause, whereArgs, null, null, null, null);
+        Cursor cursor = mDataBase.query(TaskDbSchema.TasksTable.NAME, null, whereClause, null, null, null, null, null);
 
         try {
             cursor.moveToFirst();
@@ -96,7 +99,7 @@ public class TasksRepository {
     }
     public Task getTask(UUID id) {
 
-        String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ?";
+        String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ?" ;
         String[] whereArgs = new String[]{id.toString()};
         Cursor cursor = mDataBase.query(TaskDbSchema.TasksTable.NAME, null, whereClause, whereArgs, null, null, null, null);
 
@@ -172,6 +175,7 @@ public class TasksRepository {
             cursor.close();
         }
     }
+
     public ContentValues getContentValuesTasks(Task task) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.UUID, task.getId().toString());
@@ -180,6 +184,7 @@ public class TasksRepository {
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.DATE, task.getDate().getTime());
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.TIME, task.getTime());
         contentValues.put(TaskDbSchema.TasksTable.tasksCols.DONE, task.isDone() ? 1 : 0);
+        contentValues.put(TaskDbSchema.TasksTable.tasksCols.USER_ID,ToDoListActivity.mId);
         return contentValues;
     }
     public ContentValues getContentValuesUsers(Users users) {
