@@ -199,6 +199,7 @@ public class TasksRepository {
 
     }
 
+
     public List<Task> getDoneList() {
         return new ArrayList<>();
     }
@@ -224,6 +225,15 @@ public class TasksRepository {
             }
         }
         return list;
+    }
+    public void upDatelistGuest(Task task){
+        for (int i = 0; i <mTaskList.size() ; i++) {
+            if (mTaskList.get(i).equals(task)){
+                mTaskList.remove(task);
+                mTaskList.add(task);
+            }
+        }
+
     }
 
 

@@ -156,14 +156,21 @@ public class TaskDetailFragment extends Fragment {
 //                updateFragments();
                 mTask.setTitle(mTextTextViewTitle.getText().toString());
                 mTask.setDetail(mTextViewDescribtion.getText().toString());
-                TasksRepository.getInstance(getActivity()).upDate(mTask);
-                Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
-                startActivity(intent);
+                if (ToDoListActivity.mId > 0) {
+                    TasksRepository.getInstance(getActivity()).upDate(mTask);
+                    Intent intent = new Intent(ToDoListActivity.newIntent(getActivity(), ToDoListActivity.mId));
+                    startActivity(intent);
 //                getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK,new Intent());
 //                getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0,Activity.RESULT_OK,new Intent());
 //                getActivity().getSupportFragmentManager().popBackStack();
+                } else {
 
+                    TasksRepository.getInstance(getActivity()).upDatelistGuest(mTask);
+                    Intent intent = new Intent(ToDoListActivity.newIntent(getActivity(), ToDoListActivity.mId));
+                    startActivity(intent);
+                }
             }
+
         });
         return view;
     }
