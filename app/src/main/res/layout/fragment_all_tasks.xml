@@ -5,7 +5,7 @@
     android:id="@+id/fram"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c0d1ba"
+    android:background="#ffffff"
     tools:context=".AllTasksFragment"
     tools:layout_editor_absoluteY="25dp"
     >
@@ -16,10 +16,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -27,8 +27,8 @@
         android:id="@+id/btn_action"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="48dp"
         android:layout_marginEnd="48dp"
+        android:layout_marginBottom="48dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
