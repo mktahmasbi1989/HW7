@@ -36,10 +36,8 @@ public class TasksRepository {
     }
 
     public List<Task> getTaskList() {
-//        return mTaskList;
         List<Task> taskList = new ArrayList<>();
         String whereClause = TaskDbSchema.TasksTable.tasksCols.USER_ID + " = " + ToDoListActivity.mId;
-//        String[] whereArgs = new String[]{String.valueOf(ToDoListActivity.mId)};
         Cursor cursor = mDataBase.query(TaskDbSchema.TasksTable.NAME, null, whereClause, null, null, null, null, null);
 
         try {
@@ -69,8 +67,6 @@ public class TasksRepository {
     public List<Task> getDoneTaskList(){
         List<Task> taskList = new ArrayList<>();
         String whereClause = TaskDbSchema.TasksTable.tasksCols.DONE + " = " + 1 ;
-//        String[] whereArgs = new String[]{"1"};
-
         Cursor cursor = mDataBase.query(TaskDbSchema.TasksTable.NAME, null, whereClause, null, null, null, null, null);
 
         try {
@@ -125,13 +121,7 @@ public class TasksRepository {
         } finally {
             cursor.close();
         }
-//
-//        List<Task> list = getTaskList();
-//        for (int i = 0; i < list.size(); i++) {
-//            if (list.get(i).getId().equals(id))
-//                return list.get(i);
-//        }
-//        return null;
+
     }
     public void delete(Task task) {
         String whereClause = TaskDbSchema.TasksTable.tasksCols.UUID + " = ? ";

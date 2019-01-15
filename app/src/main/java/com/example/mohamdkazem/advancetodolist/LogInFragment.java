@@ -53,11 +53,9 @@ public class LogInFragment extends Fragment {
 
                 Users user = TasksRepository.getInstance(getActivity()).getUser(userName, passWord);
                 if (user != null) {
-                    if ((user.getName().equals(userName) && user.getPassword().equals(passWord))) {
                         Intent intent = new Intent(ToDoListActivity.newIntent(getActivity(), user.getUserId()));
                         startActivity(intent);
 
-                    }
                 } else
                     Toast.makeText(getActivity(), getString(R.string.wrongUserOrPass), Toast.LENGTH_SHORT).show();
 
