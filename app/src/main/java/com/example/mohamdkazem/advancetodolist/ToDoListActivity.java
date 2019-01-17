@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
+import com.example.mohamdkazem.advancetodolist.Model.Users;
+
 public class ToDoListActivity extends AppCompatActivity {
     private static final String USER_ID = "com.example.mohamdkazem.advancetodolist.userId";
     public TabLayout mTabLayout;
@@ -65,5 +68,10 @@ public class ToDoListActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+
+    }
 }

@@ -144,7 +144,7 @@ public class TasksRepository {
     public Users getUser(String userName, String passWord) {
 
         String whereClause = TaskDbSchema.UsersTable.usersCols.USERNAME + " = ? AND " + TaskDbSchema.UsersTable.usersCols.PASSWORD + " = ?";
-        String[] whereArgs = new String[]{userName.toString(), passWord.toString()};
+        String[] whereArgs = new String[]{userName, passWord};
         Cursor cursor = mDataBase.query(TaskDbSchema.UsersTable.NAME, null, whereClause, whereArgs, null, null, null, null);
 
 
@@ -188,6 +188,10 @@ public class TasksRepository {
         ContentValues values = getContentValuesUsers(user);
         mDataBase.insert(TaskDbSchema.UsersTable.NAME, null, values);
     }
+    public void removeUser(Users users){
+        String whereClause = TaskDbSchema.UsersTable.usersCols.USERNAME + " = ? " + " AND " + TaskDbSchema.UsersTable.usersCols.PASSWORD + " = ? ";
+        mDataBase.delete(TaskDbSchema.TasksTable.NAME, whereClause, new String[]{users.getName(),users.getPassword()});
+    }
     public void addToAllList(Task task) {
         ContentValues values = getContentValuesTasks(task);
         mDataBase.insert(TaskDbSchema.TasksTable.NAME, null, values);
@@ -195,41 +199,41 @@ public class TasksRepository {
     }
 
 
-    public List<Task> getDoneList() {
-        return new ArrayList<>();
-    }
-    public List<Task> getTaskListGuest(){
-        return mTaskList;
-    }
-    public void addTaskListGuest(Task task){
-        mTaskList.add(task);
-    }
-    public Task getTaskGuest(UUID id) {
-        List<Task> list = mTaskList;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId().equals(id))
-                return list.get(i);
-        }
-        return null;
-    }
-    public List<Task> removeTask(Task task) {
-        List<Task>list = mTaskList;
-        for (int i = 0; i <list.size() ; i++) {
-            if (list.get(i).equals(task)){
-                list.remove(list.get(i));
-            }
-        }
-        return list;
-    }
-    public void upDatelistGuest(Task task){
-        for (int i = 0; i <mTaskList.size() ; i++) {
-            if (mTaskList.get(i).equals(task)){
-                mTaskList.remove(task);
-                mTaskList.add(task);
-            }
-        }
-
-    }
+//    public List<Task> getDoneList() {
+//        return new ArrayList<>();
+//    }
+//    public List<Task> getTaskListGuest(){
+//        return mTaskList;
+//    }
+//    public void addTaskListGuest(Task task){
+//        mTaskList.add(task);
+//    }
+//    public Task getTaskGuest(UUID id) {
+//        List<Task> list = mTaskList;
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getId().equals(id))
+//                return list.get(i);
+//        }
+//        return null;
+//    }
+//    public List<Task> removeTask(Task task) {
+//        List<Task>list = mTaskList;
+//        for (int i = 0; i <list.size() ; i++) {
+//            if (list.get(i).equals(task)){
+//                list.remove(list.get(i));
+//            }
+//        }
+//        return list;
+//    }
+//    public void upDatelistGuest(Task task){
+//        for (int i = 0; i <mTaskList.size() ; i++) {
+//            if (mTaskList.get(i).equals(task)){
+//                mTaskList.remove(task);
+//                mTaskList.add(task);
+//            }
+//        }
+//
+//    }
 
 
 }

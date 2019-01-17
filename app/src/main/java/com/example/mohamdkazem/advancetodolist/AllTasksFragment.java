@@ -20,8 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.mohamdkazem.advancetodolist.Model.Task;
 import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
+import com.example.mohamdkazem.advancetodolist.Model.Users;
 
 import java.util.List;
 import java.util.Objects;
@@ -68,9 +71,6 @@ public class AllTasksFragment extends Fragment {
 
                 AddTaskFragment addTaskFragment=AddTaskFragment.newInstance();
                 addTaskFragment.show(getFragmentManager(),TAG_DIALOG_DETAIL);
-//                getActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.mainLayout, AddTaskFragment.newInstance()).addToBackStack("add")
-//                        .commit();
             }
         });
         upDateUI();
@@ -124,7 +124,12 @@ public class AllTasksFragment extends Fragment {
                 .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        getActivity().finish();
+                        Users users=TasksRepository.getInstance(getActivity()).getUser("fakeName","fakePass");
+                        if (users.getUserId()==ToDoListActivity.mId){
+                            TasksRepository.getInstance(getActivity()).deleteAllTasks();
+                            getActivity().finish();
+                        }else getActivity().finish();
+
                     }
                 }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
                     @Override
@@ -143,7 +148,7 @@ public class AllTasksFragment extends Fragment {
     }
 
     private void upDateUI() {
-        if (ToDoListActivity.mId > 0) {
+
             List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskList();
             if (mListTask.size() == 0) {
                 mTextViewNoTask.setVisibility(View.VISIBLE);
@@ -154,20 +159,6 @@ public class AllTasksFragment extends Fragment {
             } else
                 mJobAdaptor.setTasks(mListTask);
             mJobAdaptor.notifyDataSetChanged();
-        }
-        else {
-            List<Task> mListTask = TasksRepository.getInstance(getActivity()).getTaskListGuest();
-            if (mListTask.size() == 0) {
-                mTextViewNoTask.setVisibility(View.VISIBLE);
-            }
-            if (mJobAdaptor == null) {
-                mJobAdaptor = new JobAdaptor(mListTask);
-                mRecyclerView.setAdapter(mJobAdaptor);
-            } else
-                mJobAdaptor.setTasks(mListTask);
-            mJobAdaptor.notifyDataSetChanged();
-
-        }
 
     }
 
@@ -211,15 +202,7 @@ public class AllTasksFragment extends Fragment {
             mTitle=itemView.findViewById(R.id.job_title_holder);
             mDetail=itemView.findViewById(R.id.job_detail_holder);
             mFirstChar=itemView.findViewById(R.id.firstChar);
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().
-//                            beginTransaction().addToBackStack("detail")
-//                            .replace(R.id.mainLayout, TaskDetailFragment.newInstance(mTask.getId()))
-//                            .commit();
-//                }
-//            });
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -244,5 +227,11 @@ public class AllTasksFragment extends Fragment {
         if (requestCode==0){
             upDateUI();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
     }
 }

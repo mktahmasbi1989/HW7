@@ -53,6 +53,7 @@ public class LogInFragment extends Fragment {
 
                 Users user = TasksRepository.getInstance(getActivity()).getUser(userName, passWord);
                 if (user != null) {
+                        getActivity().finish();
                         Intent intent = new Intent(ToDoListActivity.newIntent(getActivity(), user.getUserId()));
                         startActivity(intent);
 

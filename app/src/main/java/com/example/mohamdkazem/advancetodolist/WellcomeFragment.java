@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
+import com.example.mohamdkazem.advancetodolist.Model.Users;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,7 +55,10 @@ public class WellcomeFragment extends Fragment {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),-1));
+                Users users=new Users("fakeName","fakePass","fakeEmail");
+                TasksRepository.getInstance(getActivity()).addUsers(users);
+                Users user = TasksRepository.getInstance(getActivity()).getUser("fakeName", "fakePass");
+                Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),user.getUserId()));
                 startActivity(intent);
                 getActivity().finish();
             }

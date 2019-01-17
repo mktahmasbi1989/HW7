@@ -62,9 +62,8 @@ public class TaskDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         assert getArguments() != null;
         UUID jobId= (UUID) getArguments().getSerializable(ARG_JOB_ID);
-        if (ToDoListActivity.mId>0) {
             mTask = TasksRepository.getInstance(getActivity()).getTask(jobId);
-        }else mTask=TasksRepository.getInstance(getActivity()).getTaskGuest(jobId);
+
     }
 
 
@@ -113,15 +112,10 @@ public class TaskDetailFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                if (ToDoListActivity.mId>0){
+
                                     TasksRepository.getInstance(getActivity()).delete(mTask);
                                     Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
                                     startActivity(intent);
-                                }else {
-                                    TasksRepository.getInstance(getActivity()).removeTask(mTask);
-                                    Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),ToDoListActivity.mId));
-                                    startActivity(intent);
-                                }
 
 
 
@@ -156,19 +150,13 @@ public class TaskDetailFragment extends Fragment {
 //                updateFragments();
                 mTask.setTitle(mTextTextViewTitle.getText().toString());
                 mTask.setDetail(mTextViewDescribtion.getText().toString());
-                if (ToDoListActivity.mId > 0) {
+
                     TasksRepository.getInstance(getActivity()).upDate(mTask);
                     Intent intent = new Intent(ToDoListActivity.newIntent(getActivity(), ToDoListActivity.mId));
                     startActivity(intent);
 //                getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK,new Intent());
 //                getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0,Activity.RESULT_OK,new Intent());
 //                getActivity().getSupportFragmentManager().popBackStack();
-                } else {
-
-                    TasksRepository.getInstance(getActivity()).upDatelistGuest(mTask);
-                    Intent intent = new Intent(ToDoListActivity.newIntent(getActivity(), ToDoListActivity.mId));
-                    startActivity(intent);
-                }
             }
 
         });

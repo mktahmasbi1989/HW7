@@ -113,19 +113,10 @@ public class AddTaskFragment extends DialogFragment {
                     String detail= mEditTextDetail.getText().toString();
                     mTask =new Task(title,detail,myDate);
 
-                    if (ToDoListActivity.mId>0) {
                         TasksRepository.getInstance(getActivity()).addToAllList(mTask);
-
                         getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK, new Intent());
                         getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0, Activity.RESULT_OK, new Intent());
                         dismiss();
-                    }else {
-
-                        TasksRepository.getInstance(getActivity()).addTaskListGuest(mTask);
-                        getActivity().getSupportFragmentManager().getFragments().get(1).onActivityResult(1, Activity.RESULT_OK, new Intent());
-                        getActivity().getSupportFragmentManager().getFragments().get(0).onActivityResult(0, Activity.RESULT_OK, new Intent());
-                        dismiss();
-                    }
                 }
             }
         });
