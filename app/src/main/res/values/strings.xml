@@ -40,4 +40,7 @@
     <string name="deleteAlll">حدف همه</string>
     <string name="Exit">خروج</string>
     <string name="wrongUserOrPass">نام کاربری یا رمز عبور اشتباه است</string>
+    <string name="fakeUsername">fakeName</string>
+    <string name="fakePassWord">fakePass</string>
+    <string name="fakeEmail">fakeEmail</string>
 </resources>

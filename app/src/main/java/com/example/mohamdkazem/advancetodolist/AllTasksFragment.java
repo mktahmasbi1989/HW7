@@ -124,12 +124,7 @@ public class AllTasksFragment extends Fragment {
                 .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Users users=TasksRepository.getInstance(getActivity()).getUser("fakeName","fakePass");
-                        if (users.getUserId()==ToDoListActivity.mId){
-                            TasksRepository.getInstance(getActivity()).deleteAllTasks();
-                            getActivity().finish();
-                        }else getActivity().finish();
-
+                        exit();
                     }
                 }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
                     @Override
@@ -137,6 +132,14 @@ public class AllTasksFragment extends Fragment {
                     }
                 }).create();
         alertDialog.show();
+    }
+
+    private void exit() {
+        Users users=TasksRepository.getInstance(getActivity()).getUser(getString(R.string.fakeUsername),getString(R.string.fakePassWord));
+        if (users.getUserId()==ToDoListActivity.mId){
+            TasksRepository.getInstance(getActivity()).deleteAllTasks();
+            getActivity().finish();
+        }else getActivity().finish();
     }
 
 

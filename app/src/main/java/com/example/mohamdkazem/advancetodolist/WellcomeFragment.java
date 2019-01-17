@@ -55,9 +55,9 @@ public class WellcomeFragment extends Fragment {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Users users=new Users("fakeName","fakePass","fakeEmail");
+                Users users=new Users(getString(R.string.fakeUsername),getString(R.string.fakePassWord),getString(R.string.fakeEmail));
                 TasksRepository.getInstance(getActivity()).addUsers(users);
-                Users user = TasksRepository.getInstance(getActivity()).getUser("fakeName", "fakePass");
+                Users user = TasksRepository.getInstance(getActivity()).getUser(getString(R.string.fakeUsername), getString(R.string.fakePassWord));
                 Intent intent=new Intent(ToDoListActivity.newIntent(getActivity(),user.getUserId()));
                 startActivity(intent);
                 getActivity().finish();
