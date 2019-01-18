@@ -138,12 +138,12 @@
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:layout_weight="1"
-            android:background="?android:attr/colorSecondary"
             android:drawableStart="@android:drawable/ic_menu_edit"
             android:padding="4dp"
             android:text="@string/edite_textView"
             android:textColor="@color/ic_launcher_background"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            />
 
         <Button
             android:id="@+id/btn_delete"

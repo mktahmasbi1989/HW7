@@ -12,7 +12,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,14 +19,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mohamdkazem.advancetodolist.Model.Task;
 import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
 import com.example.mohamdkazem.advancetodolist.Model.Users;
 
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -124,7 +121,8 @@ public class AllTasksFragment extends Fragment {
                 .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        exit();
+//                        exit();
+                        getActivity().finish();
                     }
                 }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
                     @Override
@@ -232,9 +230,5 @@ public class AllTasksFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
 
-    }
 }

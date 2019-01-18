@@ -2,18 +2,14 @@ package com.example.mohamdkazem.advancetodolist;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
 import android.widget.Toast;
-
-import com.example.mohamdkazem.advancetodolist.Model.TasksRepository;
-import com.example.mohamdkazem.advancetodolist.Model.Users;
 
 public class ToDoListActivity extends AppCompatActivity {
     private static final String USER_ID = "com.example.mohamdkazem.advancetodolist.userId";
@@ -68,10 +64,5 @@ public class ToDoListActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
 
-
-    }
 }
